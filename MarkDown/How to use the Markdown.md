@@ -156,6 +156,7 @@ This is a paragraph:
     This is a code block.
 end code block.
 
+```
 
 ## 2.5 수평선 ```</hr>```
 아래 줄은 모두 수평선을 만든다.
