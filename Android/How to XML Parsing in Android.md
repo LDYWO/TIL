@@ -28,8 +28,7 @@
 **AsyncTask**를 사용하면 백그라운드 스레드와 메인 스레드 간의 커뮤니케이션이 간단해진다. *종료 후 결과를 UI에 반영할수도 있고*, *백그라운드 스레드 작업 중에 UI 요청을 처리할수도 있다.*
 
 ### 1.3 AsyncTask와 Activity Lifecycle
-> **몇 초 정도의 짧은 시간이 걸리는 작업에 대해서만 AsyncTask**를 사용하도록 권장하며,
-그 이상의 작업은 **Executor, ThreadPoolExecutor, FutureTask**등을 사용한다.
+**몇 초 정도의 짧은 시간이 걸리는 작업에 대해서만 AsyncTask**를 사용하도록 권장하며, 그 이상의 작업은 **Executor, ThreadPoolExecutor, FutureTask**등을 사용한다.
 
 #### 1.3.1 문제점
   __1. 메모리릭__
@@ -140,3 +139,6 @@ AsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
         super.onPostExecute(doc);
     }
 }
+```
+
+***
