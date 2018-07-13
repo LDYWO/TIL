@@ -84,12 +84,13 @@
         }
     }
   });
-```
- 3. 스레드를 실행한다. (UI를 핸들러 내에서 처리, 스레드에서 핸들러 메시지를 처리)
-
+  ```
+  3. 스레드를 실행한다. (UI를 핸들러 내에서 처리, 스레드에서 핸들러 메시지를 처리)
+***
 
 - **Runnable 객체 구현방식**
   1. **Runnable** 인터페이스를 implements하여 ```Handler```를 구현한다.
+
 
   ```
   public class ProgressRunnable implements Runnable {
