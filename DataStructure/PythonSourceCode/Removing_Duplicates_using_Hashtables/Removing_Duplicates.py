@@ -11,7 +11,7 @@ def remove_duplicate3(L):
 if __name__ == "__main__":
     A = []
     for i in range(150):
-        A.append(random.randrange(0,100))
+        A.append(random.randrange(1,100))
     print(A)
 
     print(remove_duplicate3(A))

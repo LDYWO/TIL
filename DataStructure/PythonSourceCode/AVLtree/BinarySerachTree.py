@@ -61,14 +61,14 @@ class BinarySearchTree(BinaryTree):
 
     def nextNode(self):
         if self._left:
-            return self._left.nextNode()
+            return self._left.Nextnode()
         else:
             return self
 
     def remove(self, key):
         removeNode = self.find(key)
-        if removeNode: # key°¡ tree ¾È¿¡ ÀÖ´Â °æ¿ì
-            if removeNode.is_internal(): # internal nodeÀÎ °æ¿ì 2°¡Áö (child 1°³ or 2°³)
+        if removeNode: # keyê°€ tree ì•ˆì— ìˆëŠ” ê²½ìš°
+            if removeNode.is_internal(): # internal nodeì¸ ê²½ìš° 2ê°€ì§€ (child 1ê°œ or 2ê°œ)
                 if removeNode._right:
                     if removeNode._left:
                         next = removeNode._left.nextNode()
@@ -94,9 +94,9 @@ class BinarySearchTree(BinaryTree):
                     else:
                         removeNode._parent._right = removeNode._left
                     removeNode.delete()
-            else: # external nodeÀÎ °æ¿ì ±×³É »èÁ¦
+            else: # external nodeì¸ ê²½ìš° ê·¸ëƒ¥ ì‚­ì œ
                 removeNode.delete()
-        else: # Áö¿ï key°¡ tree ¾È¿¡ ¾ø´Â °æ¿ì
+        else: # ì§€ìš¸ keyê°€ tree ì•ˆì— ì—†ëŠ” ê²½ìš°
             return False
 
 
