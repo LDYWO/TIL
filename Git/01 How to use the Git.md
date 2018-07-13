@@ -25,9 +25,9 @@ git push   : local repository를 remote repository에 업로드
 #### 2.2. 이미 작업한 프로젝트의 업로드
 **처음 프로젝트를 올리고 이후에 수정 작업을 진행할 때는 위의 과정을 일부 생략할 수 있다.**
 > 1. **Git Shell**을 이용하여 **repository**에 **push**할 폴더로 이동한다.
-> 4. _"git add"_ 명령어를 입력하여 모든 파일을 추가 시킵니다.
+> 4. _"git add ."_ 명령어를 입력하여 모든 파일을 추가 시킵니다.
 > 5. _"git commit -m "something"_ 명령어를 입력하여 **commit** 메시지를 작성합니다.
-> 7. _"git push 0u origin master"_ 명령어를 입력하여 **repository**에 등록합니다.
+> 7. _"git push -u origin master"_ 명령어를 입력하여 **repository**에 등록합니다.
 > 8. **GitHub** 계정의 이메일 주소와 비밀번호를 입력합니다.
 
 ***
