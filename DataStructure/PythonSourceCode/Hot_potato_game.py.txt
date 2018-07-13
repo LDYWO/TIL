@@ -1,0 +1,43 @@
+import random
+
+class Queue
+    def __init__(self)
+        self.items = []
+    def isEmpty(self)
+        return self.items == []
+    def enqueue(self,item)
+        self.items.insert(0,item)
+    def dequeue(self)
+        return self.items.pop()
+    def size(self)
+        return len(self.items)
+
+def hotPotato(namelist)
+    bomb_count = random.randint(1,namelist.__len__())
+    j=bomb_count
+    potato_queue = Queue()
+
+    for name in namelist
+        potato_queue.enqueue(name)
+
+    if potato_queue.size()  1
+        if (bomb_count==0)
+            return potato_queue.dequeue()
+        else
+            for i in range(namelist.__len__())
+                potato_queue.enqueue(potato_queue.dequeue())
+                bomb_count -= 1
+                if (bomb_count == 0)
+                    namelist.__delitem__(j-1)
+                    return hotPotato(namelist)
+                else
+                    continue
+        hotPotato(namelist)
+
+    else
+        return potato_queue.dequeue()
+
+players = ['È«±æµ¿','È«µ¿±æ','±æÈ«µ¿','±æµ¿È«','µ¿È«±æ','µ¿±æÈ«','ÃÖÁ¤ÁÖ','¿À¼Ò¸í','°­±×·ç']
+
+if __name__ == __main__
+    print(The winner is,hotPotato(players))

@@ -1,0 +1,31 @@
+import turtle
+
+def draw_sierpinski(length, depth, angle, myTurtle):
+    if depth == 0 :
+        myTurtle.forward(length)
+        return
+
+    myTurtle.left(angle)
+    draw_sierpinski(length/2, depth-1, -angle, myTurtle)
+    myTurtle.right(angle)
+    draw_sierpinski(length/2, depth-1, angle, myTurtle)
+    myTurtle.right(angle)
+    draw_sierpinski(length/2, depth-1, -angle, myTurtle)
+    myTurtle.left(angle)
+
+def getMid(p1, p2):
+    return ( (p1[0] + p2[0]) / 2, (p1[1] + p2[1])/2)
+
+def main():
+    myTurtle = turtle.Turtle()
+    myWin = turtle.Screen()
+    myTurtle.speed(100)
+    myTurtle.setheading(0)
+    myTurtle.penup()
+    myTurtle.goto(-250, -250)
+    myTurtle.pendown()
+    draw_sierpinski(500, 5, 50, myTurtle)
+    myTurtle.penup()
+    myWin.exitonclick()
+
+main()

@@ -82,7 +82,7 @@
 ## 4. 응용 예제
 > **WebView**를 **Custom Dialog**에 띄워 **앱의 업데이트 정보**를 출력하는 예제 구현
 
-- [소스 코드 링크](https://github.com/LDYWO/TIL/tree/master/Android/Source%20Code/WebView)
+- [소스 코드 링크](https://github.com/LDYWO/TIL/tree/master/Android/SourceCode/WebView)
 
     1. 커스텀 다이얼로그를 출력하는 메소드 관리 클래스 생성
 
