@@ -136,4 +136,70 @@
 
 > 이외의 **Img태그와 CSS-background의 차이점**은 [What is the HTML](https://github.com/LDYWO/TIL/blob/master/Web/HTML/01%20What%20is%20the%20HTML.md)을 참고하자.
 
+### 2.4 테두리 속성
+#### 2.4.1 border style
+
+- **border-style**
+![border-style](https://www.w3.org/TR/css-backgrounds-3/images/borderstyles.png)
+
+- **border-radius**
+![border-radius](http://www.studentsempire.com/wp-content/uploads/2018/03/border.png)
+
+- **border-top, right, bottom, left**
+```
+p {
+    border-left: 6px solid red;
+    background-color: lightgrey;
+}
+
+p {
+    border-bottom: 6px solid red;
+    background-color: lightgrey;
+}
+```
+- **border**
+```
+border-style: solid;
+border-width: 5px;         ---------> border: solid 5px #000;
+border-color: #000;
+```
+
+### 2.5 속성 적용 방향
+**시계 방향**으로 적용된다
+``` margin: 10px 5px 3px 1px;```
+
 ***
+
+## 3. 그 외 디자인 소스
+### 1. Google Material Design
+- [Google Material Design](https://material.io/icons/)
+### 2. Google Fonts
+- [Google Fonts](https://fonts.google.com/)
+
+***
+
+## 4. 반응형 웹
+웹 디자인 기법 중 하나. __웹(Web)__ 에 접속하는 **디바이스**에 반응하는(**Responsive**) 디자인(**Design**)을 말한다.
+
+### 4.1 미디어 쿼리
+```@media only all and (조건문) {실행문}```
+* **@media** : **미디어 쿼리가 시작**됨을 선언
+* **only** : **미디어 쿼리를 지원하는 사용자 에이전트**만, 미디어 쿼리 구문을 해석하라는 명령이며 생략 가능, 생략시 **default는 only**
+* **all** : 미디어 쿼리를 해석해야 할 대상 미디어를 선언한 것, ```all```은 모든 미디어가 이 구문을 해석해야 한다. **screen**이나 **print**와 같은 특정 미디어를 언급할 수 있음. 생략 시 **default는 all**
+* **and** : 논리적으로 **'AND' 연산**을 수행하여 **앞과 뒤의 조건을 모두 만족**해야 한다는 것을 의미, **조건이 유일하거나** 또는 **only, all과 같은 선행 키워드가 생략되면 and 키워드는 사용하지 말아야 한다.** and 대신 **콤마 ',' 기호를 사용하면 'OR' 연산을 수행**한다. 'OR' 연산은 나열된 조건 중에서 **하나만 참이어도 {실행문}을 해석**한다.
+* **조건문** : **조건문이 참일 때 {실행문}을 처리**하고 거짓일 때 무시, 조건문은 **두 가지 이상 등장할 수 있다.** 둘 이상의 조건문은 **'and' 키워드 또는 콤마 ',' 기호로 연결**해야 한다.
+* **실행문** : 일반적인 **CSS 코드**를 이 괄호 안에 작성한다. 브라우저는 **(조건문)이 참일 때 실행문 안쪽에 있는 CSS 코드를 해석**한다.
+
+```
+  /* iPads {portrait and landscape} */
+  @media only screen
+  and (min-width : 768px)
+  and (max-width : 1024px) {
+    body  { background-color: orange; }
+    h1 { color: black; }
+  }
+```
+
+***
+
+
