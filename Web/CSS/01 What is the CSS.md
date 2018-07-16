@@ -140,12 +140,15 @@
 #### 2.4.1 border style
 
 - **border-style**
-![border-style](https://www.w3.org/TR/css-backgrounds-3/images/borderstyles.png)
+
+  ![border-style](https://www.w3.org/TR/css-backgrounds-3/images/borderstyles.png)
 
 - **border-radius**
-![border-radius](http://www.studentsempire.com/wp-content/uploads/2018/03/border.png)
+
+  ![border-radius](http://www.studentsempire.com/wp-content/uploads/2018/03/border.png)
 
 - **border-top, right, bottom, left**
+
 ```
 p {
     border-left: 6px solid red;
