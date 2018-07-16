@@ -128,9 +128,9 @@
           height: auto;
   }
   ```
-    - ```background-size: cover;```: 이미지 크기 비율을 유지한 상태에서 이미지가 들어있는 가로 또는 세로 중 큰 값에 이미지를 맞춘다.
+- ```background-size: cover;```: 이미지 크기 비율을 유지한 상태에서 이미지가 들어있는 가로 또는 세로 중 큰 값에 이미지를 맞춘다.
     ![cover](https://t1.daumcdn.net/cfile/tistory/9938B5485A5DC37F0D)
-    - ```background-size: contain;```: 이미지 크기 비율을 그대로 유지한 상태에서 원하는 영역에 전체 이미지가 들어가도록 가장 작은 크기로 이미지 스케일을 조정한다.
+- ```background-size: contain;```: 이미지 크기 비율을 그대로 유지한 상태에서 원하는 영역에 전체 이미지가 들어가도록 가장 작은 크기로 이미지 스케일을 조정한다.
     ![contain](https://t1.daumcdn.net/cfile/tistory/99EAD3485A5DC3801D)
 
 
