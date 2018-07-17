@@ -6,7 +6,7 @@
 - **HTML과 XHTML**에 주로 쓰인다.
 - **W3C의 표준**이며 레이아웃과 스타일을 정의할 때의 자유도가 높다.
 ### 1.1 표현 방식
-  ```
+  ```css
   꾸밀대상 {      
       속성 : 값;
   }
@@ -17,7 +17,7 @@
   ### 1.2 유형
   1. **Element** Selector (Tag or Type Selector)
     - **특정 타입**의 **모든 HTML 엘리먼트**를 선택한다.
-  ```
+  ```css
   p {
             color: red;
             width: 500px;
@@ -27,7 +27,7 @@
 
   2. **Id** Selector
     - **특정 아이디**를 가진 페이지의 엘리먼트 (**단 하나만 허용**)
-  ```
+  ```css
   #my-id {
             color: red;
             width: 500px;
@@ -36,7 +36,7 @@
   ```
   3. **Class** Selector
     - **특정 클래스**를 가진 페이지의 엘리먼트 (**여러 개 허용**)
-  ```
+  ```css
   .my-class {
             color: red;
             width: 500px;
@@ -45,7 +45,7 @@
   ```
   4. **Attribute** Selector
     - **특정 속성**을 갖는 페이지의 엘리먼트
-  ```
+  ```css
   .my-class[status = "scrolled"] {
             color: red;
             width: 500px;
@@ -54,7 +54,7 @@
   ```
   5. **Pseudo** Selector
     - **특정 상태**에 있는 **특정 엘리먼트**
-  ```
+  ```css
   .my-class:hover {
             color: blue;
   }
@@ -72,12 +72,12 @@
     - **Margin**: 엘리먼트 바깥쪽을 둘러싼 공간
 
 ### 2.1 Display 속성
-  ```
+  ```css
   <div class = "box"> ... </div>             
   <div class = "box"> ... </div>
   <div class = "box"> ... </div>
   ```
-  ```
+  ```css
   .box {
       width: 500px;
       height: 30px;
@@ -106,7 +106,7 @@
     - **상, 하, 좌, 우 margin 적용 가능**
 
 ### 2.2 해상도에 관계 없는 정렬
-```
+```css
   max-width: 1200px;
   margin: auto;
 ```
@@ -114,11 +114,11 @@
 
 ### 2.3 이미지 삽입
   1. **img tag**
-  ```
+  ```css
   <img src="whiteowl.jpeg" alt="하얀 부엉이" width="100" height="auto">
   ```
   2. **CSS의 background 속성**
-  ```
+  ```css
   <div class="bgImage"></div>
 
   .bgImage {
@@ -149,7 +149,7 @@
 
 - **border-top, right, bottom, left**
 
-```
+```css
 p {
     border-left: 6px solid red;
     background-color: lightgrey;
@@ -161,7 +161,7 @@ p {
 }
 ```
 - **border**
-```
+```css
 border-style: solid;
 border-width: 5px;         ---------> border: solid 5px #000;
 border-color: #000;
@@ -193,7 +193,7 @@ border-color: #000;
 * **조건문** : **조건문이 참일 때 {실행문}을 처리**하고 거짓일 때 무시, 조건문은 **두 가지 이상 등장할 수 있다.** 둘 이상의 조건문은 **'and' 키워드 또는 콤마 ',' 기호로 연결**해야 한다.
 * **실행문** : 일반적인 **CSS 코드**를 이 괄호 안에 작성한다. 브라우저는 **(조건문)이 참일 때 실행문 안쪽에 있는 CSS 코드를 해석**한다.
 
-```
+```css
   /* iPads {portrait and landscape} */
   @media only screen
   and (min-width : 768px)
