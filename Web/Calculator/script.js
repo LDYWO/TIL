@@ -1,13 +1,13 @@
 var display = document.getElementById('display'); // 숫자가 출력되는 화면
-var num = document.getElementsByClassName('num'); // 숫자 키, 배열 (ClassName)
-var op = document.getElementsByClassName('op'); // 연산 키, 배열 (ClassName)
 
 var numStack = new Array(); // 숫자 스택
 var opStack = new Array(); // 연산자 스택
 
-var temp; // 임시로 입력 값을 받아 전달해주는 매개체
+var temp; // 임시로 입력 값을 받아 전달해주는 매개 변수
 
-var firstValidate = false;
+var result = ""; // 결과를 eval 함수로 받아서 출력해주는 변수
+
+var opValidate = false; // 연산자 기호를 처음에 누르거나, 연속으로 누르는 것을 불허하는 진리 값
 
 // 숫자 id 초기화
 var one = document.getElementById('one');
@@ -29,11 +29,6 @@ var div = document.getElementById('div');
 var equal = document.getElementById('equal');
 var del = document.getElementById('del');
 
-// 처음 들어오는 입력 값은 숫자, 숫자 다음은 숫자, 기호 가능, 기호 다음은 무조건 숫자.
-// 마지막에 Equal을 누르면 해당 계산 값이 다 나오도록 출력
-// Del 버튼을 누르면 초기화 되도록 출력
-// stack을 총 2개 생성 (num, op)
-
 one.addEventListener('click',clickNum);
 two.addEventListener('click',clickNum);
 three.addEventListener('click',clickNum);
@@ -54,24 +49,49 @@ del.addEventListener('click',clickDel);
 equal.addEventListener('click',clickEqual);
 
 function clickNum(){
-    console.log("ClickNum");
+    opValidate = true;
+
+    if (display.value == 0) display.value = "";
+
+    temp = this.value;
+    display.value += temp;
 }
 
 function clickOp(){
-    console.log("ClickOp");
+    if (opValidate == true)
+    {
+        opValidate = false;
+
+        temp = this.value;
+
+        numStack.push(display.value);
+        opStack.push(temp);
+
+        display.value = 0;
+    }
 }
 
 function clickDel(){
-    console.log("clickDel");
+    // Stack 초기화 및 display 초기화
+    display.value = 0;
+    numStack = [];
+    opStack = [];
 }
 
 function clickEqual(){
-    console.log("clickEqual");
-}
-
-function Error(){
-    // 초기 조건, 처음에는 숫자만 입력 가능
-    if (numStack.length == 0){
-
+    numStack.push(display.value);
+    // 피 연산자가 연산자보다 무조건 1개가 더 많은 상황이어야 출력이 가능하다.
+    if (numStack.length == opStack.length + 1)
+    {
+        // numStack, opStack 하나씩 pop
+        while (numStack.length != 0){
+            result += numStack.pop();
+            if (opStack.length != 0) result += opStack.pop();
+        }
+        display.value = eval(result); // display.value에 eval 함수로 result 값 출력
+        result = ""; // result 값 초기화
+    } else
+    {
+        alert("숫자를 더 입력하세요.");
     }
 }
