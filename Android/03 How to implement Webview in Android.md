@@ -16,7 +16,7 @@
 
   3. 웹뷰를 선언 및 인스턴스를 생성하고 설정을 한다.
 
-  ```
+  ```java
   webView = (WebView) findViewById(R.id.webview);
   WebSetting websetting = webView.getSettings();
   webSetting.setJavaScriptEnabled(true); // 웹 뷰에 JS 사용
@@ -24,7 +24,7 @@
   webBuiltInZoomControls(true); // WebView 내장 Zoom 사용
   ```
   4. 웹뷰 내에서 웹 브라우저를 띄워주기 위해 메소드를 설정한다.
-  ```
+  ```java
   webView.setWebViewClient(new WebViewClient(){
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -47,13 +47,13 @@
     }
   });
   ```
-  ```
+  ```java
   .onPageStarted(): 웹뷰에서 url이 로드 될 때 호출되는 함수
   .onPageFinished(): 웹뷰에서 url 로딩이 완료되면 호출되는 함수
   ```
   5. 웹 뷰를 실행한다.
 
-  ```
+  ```java
   WebView webView = (WebView)findViewById(R.id.webview);
   webView.setWebViewClient(new WebViewClient());
   webView.loadUrl(url);
@@ -68,11 +68,11 @@
 
 ### 3.2 일반적인 튜닝 옵션
   1. 캐쉬 사용하지 않기
-  ```
+  ```java
   webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
   ```
   2. 하드웨어 가속 기능 사용하기
-  ```
+  ```manifest
   AndroidManifest.xml
   android:hardwareAccelrated: true;
   ```
