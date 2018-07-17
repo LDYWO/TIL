@@ -85,12 +85,13 @@ AsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
 
 ## 3. 실습 코드
 
-```
+```java
     private class GetXMLTask extends AsyncTask <String, Void, Document>{
 ```
 > 위에서 선언해준 **파라메터 타입 세가지**와 **메소드의 파라메터 타입**이 일치 해야한다.
 순서대로 **doInBackground, onProgressUpdate, onPostExecute** 이다.
 
+```java
     @Override
     protected Document doInBackground(String... urls) {
         try {
@@ -111,8 +112,9 @@ AsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
 
         return doc;
     }
-
 ```
+
+```java
     @Override
     protected void onPostExecute(Document doc) {
 
@@ -140,3 +142,4 @@ AsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
         super.onPostExecute(doc);
     }
 }
+```
