@@ -26,7 +26,7 @@
  ### 2.2 Handler의 실행 방식
 - **메시지 처리방식**
 
-  ```
+  ```java
   Handler.sendEmptyMessage(int what);
   Message what(ID)를 사용할 경우 사용하는 메소드
 
@@ -35,7 +35,7 @@
   ```
   1. 핸들러를 정의한다.
 
-  ```
+  ```java
   TeamViewerHandler.sendEmptyMessage(0); // 팀뷰어 설치 유무 검사 핸들러 실행
 
   TeamViewerHandler.sendEmptyMessage(1); // 팀뷰어 설치 되었는지 확인하는 핸들러 루프 종료
@@ -69,7 +69,7 @@
   ```
   2. 스레드를 생성한다.
 
-  ```
+  ```java
   Thread thread1 = new Thread(new Runnable() {
     public void run() {
         try {
@@ -92,7 +92,7 @@
   1. **Runnable** 인터페이스를 implements하여 ```Handler```를 구현한다.
 
 
-  ```
+  ```java
   public class ProgressRunnable implements Runnable {
 
   public void run() {
@@ -109,7 +109,7 @@
     ```
   2. 스레드를 구현한다.
 
-  ```
+  ```java
   Thread thread1 = new Thread(new Runnable() {
   public void run() {
       try {
