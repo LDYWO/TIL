@@ -32,7 +32,7 @@
 ### 3.2 id와 class 속성
 - 하나의 특정 id는 하나의 태그에만 적용할 수 있다.
 - 하나의 class는 여러 개의 태그에 적용할 수 있다.
-```
+```html
 	<div id="bmw"></div>
 	<div id="benz" class="car"></div>
 	<div id="audi" class="car"></div>
@@ -100,7 +100,7 @@
   - 지정된 높이와 넓이만큼 이미지의 비율이 달라진다. (auto 가능)
   - CSS의 background-image는 이미지의 height를 지정해주어야 한다.
   - width는 둘 다 지정해주어야 한다. (text 첨부는 css만 가능)
-  ```
+  ```html
   <img src="image.png" alt="이미지 설명" width="500" height="300">
   ```
 9. ```<table>```
@@ -135,7 +135,7 @@
     - **target**: action에서 지정한 스크립트 파일을 다른 위치에 열도록 지정한다.
     - **method**: 폼을 서버에 전송할 http 메소드를 정한다. (GET 또는 POST)
 
-    ```
+    ```html
     <form action = "http://localhost:8080/form.jsp" accept-charset="utf-8"
           name = "person_info" method = "get">
     ```
@@ -155,21 +155,21 @@
     - ```maxlength```: 글자 수 제한으로 지정된 숫자 이상은 넣을 수 없게 한다.
 
 **사용법**
-```
+```html
 	<input type="text" name="name" placeholder="아이디 입력">
 ```
-```
+```html
 	<input type="password" name="password" value="비밀번호 입력">
 ```
-```
+```html
 	<input type="radio" name="gender" value="M">남자
 	<input type="radio" name="gender" value="F">여자
 ```
-```
+```html
 	<input type="checkbox" name="part" value="eng">영어
 	<input type="checkbox" name="part" value="math">수학
 ```
-```
+```html
 	<input type="submit" value="제출">
 ```
 
@@ -177,7 +177,7 @@
 드롭다운 리스트를 만드는 태그
 
 **사용법**
-```
+```html
 	<select>
 		<option value="ktx">KTX</option>
 		<option value="itx">ITX 새마을</option>
