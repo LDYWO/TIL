@@ -126,7 +126,7 @@ dd = 'test';
 const aa; // Missing initializer in const declaration
 ```
 - ```const```의 경우 ```let```보다 **엄격하다.**
-- 선언과 동시에 변수가 할당되어야 한다.
+- **선언**과 동시에 **변수가 할당**되어야 한다.
 - 이렇게 **JavaScript**에 ```TDZ```가 있는 이유는 **동적언어**이기 때문에 **Runtime-Type-Check**가 필요하기 때문이다.
 
 ***
