@@ -84,7 +84,7 @@ console.log(foo.name); // delete 함수는 객체의 프로퍼티를 삭제할 �
 ```
 ***
 ## 2. 참조 타입의 특성
-- Numberm String, Boolean, undefined, null을 제외한 모든 값은 객체이다.
+- Number, String, Boolean, undefined, null을 제외한 모든 값은 객체이다.
 - 배열, 함수 등도 객체이며 이들은 '참조 타입'으로 불린다.
 ```javascript
 var obj A = {

@@ -48,7 +48,7 @@ firstName = "Richard";
 var name;
 name;
 ```
-* 모든 전역 변수는 **Wondow 객체**와 연결된다.
+* 모든 전역 변수는 **Window 객체**와 연결된다.
 * 그러므로 아래와 같이 Window 객체를 통해 모든 전역변수에 접근이 가능하다.
 ```javascript
 console.log(window.myName);
@@ -87,7 +87,7 @@ showName();
 var myName; // String
 
 function myName() {
-    console.log("Rich)");
+    console.log("Rich");
 }
 
 console.log(typeof myName); // String
