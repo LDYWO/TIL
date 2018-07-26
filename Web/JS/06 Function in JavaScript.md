@@ -544,3 +544,26 @@ myFunction(1, 2, 3);
 - **자바스크립트 함수는 항상 리턴 값을 반환한다.**
 - 특히, return 문을 사용하지 않았더라도 다음의 규칙에 의해 항상 리턴 값을 전달한다.
 - 일반 함수나 메소드는 리턴 값을 지정하지 않았을 경우, **undefined**를 리턴한다.
+
+```JavaScript
+var noReturnFunc = function () {
+    console.log("This function has no return statement");
+};
+
+var result = noReturnFunc();
+console.log(result);
+```
+- 생성자 함수에서 리턴 값을 지정하지 않은 경우 생성된 객체가 리턴된다.
+```JavaScript
+function Person(name) {
+    this.name = name;
+}
+console.log(new Person('foo')); // Person(foo)
+
+function Animal(name) {
+    this.name = name;
+    return new Person('bar'); // 명시적으로 다른 객체 리턴
+}
+console.log(new Animal('cat')); // Person(bar) --> Animal 객체가 아닌 명시적 값이 리턴된다.
+```
+- 이 때, 생성자 함수에서 명시적으로 리턴한 값이 객체가 아닌 Boolean, 숫자, 문자열 등 기본 타입인 경우 이러한 리턴을 무시하고 this로 바인딩 된 객체가 리턴된다.
