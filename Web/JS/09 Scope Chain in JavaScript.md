@@ -1,6 +1,6 @@
 # Scope Chain in JavaScript
 ## 1. 스코프 체인
-- 자바스크립트도 다른 언어와 마찬가지로 스코프, 즉 유효 범위가 있다.
+- 자바스크립트도 다른 언어와 마찬가지로 **스코프**, 즉 **유효 범위**가 있다.
 - 이 유효 범위 안에서 변수와 함수가 존재한다.
 - 다음은 C 언어의 유효 범위를 확인할 수 있는 코드이다.
 
@@ -156,3 +156,55 @@ printFunc(printValue); // value1
 - 이렇게 만들어진 스코프 체인으로 식별자 인식이 이루어진다.
 - 식별자 인식은 스코프 체인의 첫 번째 변수 객체부터 시작하여, 식별자와 대응되는 이름을 가진 프로퍼티가 있으면 이를 참조하고, 없으면 다음 변수 객체로 이동하여 찾는다.
 - 여기서 ```this```는 식별자가 아닌 키워드로 분류되므로, 스코프 체인의 참조 없이 접근할 수 있다.
+
+***
+## 2. 클로저
+### 2.1 클로저의 개념
+```JavaScript
+function outerFunc() {
+    var x = 10;
+    var innerFunc = function() {
+        console.log(x);
+    }
+    return innerFunc;
+}
+
+var inner = outerFunc();
+inner(); // 10
+```
+- 즉, 클로저란 **이미 생명 주기가 끝난 외부 함수의 변수를 참조하는 함수이다.**
+- 따라서, 예제에서 ```outerFunc```에서 선언된 지역 변수 ```x```를 참조하는 ```innerFunc```가 클로저가 되고, 클로저로 참조되는 **외부변수**, 즉 ```x```를 **자유변수** 라고 한다.
+
+```JavaScript
+function outerFunc() {
+    var x = 1;
+
+    return function() {
+        // x와 arguements를 활용한 로직
+    };
+}
+
+var newFunc = outerFunc();
+newFunc();
+```
+- 다음은 자바스크립트로 **클로저**를 구현하는 전형적인 패턴이다.
+
+```JavaScript
+function outerFunc (arg1, arg2) {
+    var local = 1;
+
+    function innerFunc(innerArg) {
+        console.log(arg1 + arg2 + local + innerArg);
+    }
+    return innerFunc;
+}
+
+var inner = outerFunc(1, 1);
+inner(1); // 4
+```
+- 예제에서는 ```outerFunc()``` 함수를 호출하고 반환되는 함수 객체인 ```innerFunc()```가 **inner**로 참조된다.
+- 이것은 ```inner(n)```의 형태로 실행될 수 있다.
+- 여기서 ```outerFunc()```가 실행되면서 생성되는 변수 객체가 **스코프 체인**에 들어가게 된다.
+- 이 스코프 체인은 ```innerFunc```의 **스코프 체인**으로 참조된다.
+- 즉, ```outerFunc``` 변수 객체는 ```outerFunc()``` 함수가 종료되었지만, 여전히 ```innerFunc(내부함수)```의 ```[[scope]]```로 참조되므로 가비지 컬렉션의 대상이 되지 않고 살아남는다.
+- 이 ```outerFunc``` 변수 객체의 프로퍼티 값은 여전히 읽기 및 쓰기까지 가능하다.
