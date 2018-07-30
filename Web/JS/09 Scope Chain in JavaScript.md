@@ -420,7 +420,7 @@ exam.func2();
 - 각각의 함수가 호출될 때마다 x 값이 변화하므로 유의해야 한다.
 
 #### 2.3.3 루프 안에서 클로저를 활용할 때는 주의하자
-```
+```JavaScript
 function countSeconds(howMany) {
     for (var i = 1; i <= howMany; i++) {
         setTimeout(function() {
