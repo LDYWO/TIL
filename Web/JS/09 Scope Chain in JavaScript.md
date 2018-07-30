@@ -208,3 +208,246 @@ inner(1); // 4
 - 이 스코프 체인은 ```innerFunc```의 **스코프 체인**으로 참조된다.
 - 즉, ```outerFunc``` 변수 객체는 ```outerFunc()``` 함수가 종료되었지만, 여전히 ```innerFunc(내부함수)```의 ```[[scope]]```로 참조되므로 가비지 컬렉션의 대상이 되지 않고 살아남는다.
 - 이 ```outerFunc``` 변수 객체의 프로퍼티 값은 여전히 읽기 및 쓰기까지 가능하다.
+
+### 2.2 클로저의 활용
+- 클로저의 개념을 이해하였다면, 이 클로저를 어떻게 활용할 것인지 고민해야 한다.
+- 클로저는 성능적인 면과 자원적인 면에서 약간 손해를 볼 수 있으므로 무차별적으로 사용해서는 안된다.
+- 클로저를 잘 활용하는 좋은 자바스크립트 개발자가 되려면 많은 개발 경험을 쌓는 것이 가장 좋은 방법이다.
+
+#### 2.2.1 특정 함수에서 사용자가 정의한 객체의 메소드 연결하기
+```JavaScript
+function HelloFunc(func) {
+    this.greeting = "hello";
+}
+
+HelloFunc.prototype.call = function (func) {
+    func ? func(this.greeting) : this.func(this.greeting);
+};
+
+var userFunc = function (greeting) {
+    console.log(greeting);
+};
+
+var objHello = new HelloFunc();
+objHello.func = userFunc;
+objHello.call();
+```
+- 함수 ```HelloFunc```는 ```greeting``` 변수가 있고, ```func``` 프로퍼티로 참조되는 함수를 ```call()```함수로 호출한다.
+- 사용자는 ```func``` 프로퍼티에 자신이 정의한 함수를 참조시켜 호출할 수 있다.
+- 다만, ```HelloFunc.prototype.call()``` 을 보면 알 수 있듯이 자신의 지역 변수인 ```greeting``` 만을 인자로 사용자가 정의한 함수에 넘겨준다.
+- 사용자는 ```userFunc()``` 함수를 정의하여 ```HelloFunc.func()``` 에 참조시킨 뒤, ```HelloFunc()```의 지역 변수인 ```greeting```을 화면에 출력 시킨다.
+- 이 예제에서 ```HelloFunc()``` 는 ```greeting``` 만을 인자로 넣어 사용자가 인자로 넘긴 함수를 실행시킨다.
+- 그래서 사용자가 정의한 함수도 한 개의 인자를 받는 함수를 정의할 수 밖에 없다.
+- 여기서 사용자가 원하는 인자를 더 넣어서 ```HelloFunc()``` 를 이용하여 호출하려면 어떻게 해야할까?
+
+```JavaScript
+function HelloFunc(func) {
+    this.greeting = "hello";
+}
+
+HelloFunc.prototype.call = function (func) {
+    func ? func(this.greeting) : this. func(this.greeting);
+};
+
+var userFunc = function (greeting) {
+    console.log(greeting);
+};
+
+var objHello = new HelloFunc();
+objHello.func = userFunc;
+
+// 새로운 함수 newObj()는 HelloFunc()의 객체를 좀 더 자유롭게 활용하려고 정의한 함수이다.
+// 첫 번째 인자로 받는 obj는 HelloFunc()의 객체가 되고, 두 번째 인자 name은 사용자가 출력을 원하는 사람 이름이 된다.
+// 첫 번째 인자 obj의 func 프로퍼티에 saySomething() 함수에서 반환되는 함수를 참조하고, 이 객체를 그대로 반환한다
+// 즉, obj1은 인자로 넘겼던 objHello 객체에서 func 프로퍼티에 참조된 함수만 바뀐 객체가 된다.
+function newObj(obj, name) {
+    obj.func = saySomething(this, 'who', name);
+    return obj;
+}
+
+// 첫 번째 인자: newObj 객체 - obj1
+// 두 번째 인자: 사용자가 정의한 메소드 이름 - "who"
+// 세 번째 인자: 사용자가 원하는 사람 이름 값 - "zzoon"
+
+// 반환: 사용자가 정의한 newObj.prototype.who() 함수를 반환하는 helloFunc()의 func 함수
+// 반환되는 함수 HelloFunc가 원하는 function(greeting) {} 형식의 함수가 되는데,
+// 이것이 HelloFunc 객체의 func 프로퍼티 참조된다.
+// obj.call()로 실행되는 것은 실질적으로 newObj.prototype.who()가 된다.
+function saySomething(obj, methodName, name) {
+    return (function (greeting)) {
+        return obj[methodName](greeting, name);
+    });
+}
+
+newObj.prototype.who = function (greeting, name) {
+    console.log(greeting + " " + (name || "everyone"));
+};
+
+var obj = new newObj (objHello, "zzoom");
+obj.call(); // obj.func, 즉 newObj.prototype.who 함수 호출 --> hello zzoon
+```
+
+- 이와 같은 방식으로 사용자는 자신의 객체 메서드인 ```who``` 함수를 ```HelloFunc```에 연결시킬 수 있다.
+- 여기서 클로저는 ```saySomething()``` 에서 반환되는 ```function(greeting) {}```이 되고, 이 클로저는 자유 변수 ```obj```, ```methodName```, ```name```을 참조한다.
+- 앞 예제는 정해진 형식의 함수를 콜백해주는 라이브러리가 있을 경우, 그 정해진 형식과는 다른 형식의 사용자 정의 함수를 호출할 때 유용하게 사용된다.
+- 예를 들어 브라우저에서는 ```onclick``` 같은 프로퍼티에 해당 이벤트 핸들러를 사용자가 정의해 놓을 수가 있는데, 이 이벤트 핸들러의 형식은 ```function(event) {}``` 이다.
+- 이를 통해 브라우저는 발생한 이벤트를 event 인자로 사용자에게 넘겨주는 방식이다.
+- 여기에 event 외의 원하는 인자를 더 추가한 이벤트 핸들러를 사용하고 싶을 때, 앞과 같은 방식으로 클로저를 적절히 활용해 줄 수 있다.
+
+#### 2.2.2 함수의 캡슐화
+- 다음과 같은 함수를 작성한다고 가정해보자
+- ```"I am XXX. I live in XXX. I am XX years old"``` 라는 문장을 출력하는데,
+- XX 부분은 사용자에게 인자로 받아 값을 출력하는 함수
+- 가장 먼저 생각할 수 있는 것은 앞 문장 템플릿을 전역 변수에 저장하고, 사용자의 입력을 받은 후, 이 전역 변수에 접근하여 완성된 문장을 출력하는 방식으로 함수를 작성하는 것이다.
+
+```JavaScript
+var buffArr = [
+    'I am ',
+    '',
+    ', I live in ',
+    '',
+    ', I am ',
+    '',
+    ' years old.'
+];
+
+function getCompletedStr(name, city, age) {
+      buffArr[1] = name;
+      buffArr[3] = city;
+      buffArr[5] = age;
+      return buffArr.join('');
+}
+
+var str = getCompletedStr('zzoon', 'seoul', 16);
+console.log(str);
+```
+
+- 하지만 위의 예제에는 단점이 있다.
+- 바로 ```bufArr```라는 배열은 전역 변수로서, 외부에 노출되어 있다는 점이다.
+- 이는 다른 함수에서 쉽게 이 배열에 접근하여 값을 바꿀 수도 있고, 같은 이름의 변수를 만들어 버그가 생길 수도 있다.
+- 따라서 **클로저**를 활용하여 ```buffArr```을 추가적인 스코프에 넣고 사용하게 되면 이 문제를 해결할 수 있다.
+
+```JavaScript
+var getCompletedStr = (function () {
+  var buffArr = [
+      'I am ',
+      '',
+      ', I live in ',
+      '',
+      ', I am ',
+      '',
+      ' years old.'
+  ];
+
+return (function (name), city, age) {
+      buffArr[1] = name;
+      buffArr[3] = city;
+      buffArr[5] = age;
+      return buffArr.join('');
+  });
+})(); // 즉시 실행 함수 --> getCompletedStr에는 리턴된 함수가 할당
+
+var str = getCompletedStr('zzoon', 'seoul', 16);
+console.log(str);
+```
+- 위 예제에서 가장 먼저 주의해서 봐야 할 점은 변수 ```getCompletedStr```에 익명의 함수를 즉시 실행시켜 반환되는 함수를 할당하는 것이다.
+- 이 반환되는 함수가 **클로저**가 되고, 이 클로저는 자유 변수 ```buffArr```을 스코프 체인에서 참조할 수 있다.
+
+#### 2.2.3 setTimeout()에 지정되는 함수의 사용자 정의
+- ```setTimeout``` 함수는 웹 브라우저에서 제공하는 함수인데, 첫 번째 인자로 넘겨지는 함수 실행의 스케줄링을 할 수 있다.
+- 두 번째 인자인 밀리 초 단위 숫자 만큼의 시간 간격으로 해당 함수를 호출한다.
+- ```setTimeout()```으로 자신의 코드를 호출하고 싶다면 첫 번째 인자로 해당 함수 객체의 참조를 넘겨주면 되지만, 이것으로는 실제 실행될 때 함수에 인자를 줄 수 없다.
+- 그렇다면 자신이 정의한 함수에 인자를 넣어줄 수 있게 하려면 어떻게 해야 할까? **클로저**
+
+```JavaScript
+function callLater(obj, a, b) {
+    return (function() {
+        obj["sum"] = a + b;
+        console.log(obj["sum"]);
+    })
+}
+
+var sumObj = {
+    sum: 0
+};
+
+var func = callLater(sumObj, 1, 2);
+setTimeout(func, 500);
+```
+- 사용자가 정의한 함수 ```callLater```를 ```setTimeout``` 함수로 호출하려면, 변수 ```func```에 함수를 반환받아 ```setTimeout()``` 함수의 첫 번째 인자로 넣어주면 된다.
+- 이 때 **클로저**는 반환받은 함수고 ```obj```, ```a```, ```b```가 자유 변수가 된다.
+
+### 2.3 클로저를 활용할 때 주의 사항
+- **클로저**는 자바스크립트의 강력한 기능이지만, 너무 남발하여서는 안된다.
+- **클로저**에서 사용자가 쉽게 간과할 수 있는 사항을 정리 해본다.
+
+#### 2.3.1 클로저의 프로퍼티 값이 쓰기 가능하므로 그 값이 여러 번 호출로 항상 변할 수 있음에 유의해야 한다.
+```JavaScript
+function outerFunc(argNum) {
+    var num = argNum;
+    return function(x) {
+        num += x;
+        console.log('num: ' + num);
+    }
+}
+
+var exam = outerFunc(40);
+exam(5);
+exam(-10);
+```
+- 자유 변수 ```num```은 참조가 가능한데, 읽기 뿐만 아니라 쓰기까지 가능하다.
+- ```exam``` 값을 호출할 때 마다, 자유 변수 ```num```의 값은 계속해서 변화하니 주의해야 한다.
+
+#### 2.3.2 하나의 클로저가 여러 함수 객체의 스코프 체인에 들어가 있는 경우도 있다.
+```JavaScript
+function func() {
+    var x = 1;
+    return {
+        func1: function () {
+            console.log(++x);
+        },
+        func2: function () {
+            console.log(-x);
+        }
+    }
+}
+
+var exam = func();
+exam.func1();
+exam.func2();
+```
+- 위 예제에서 반환되는 두 객체에는 두 개의 함수가 정의되어 있는데, 두 함수 모두 자유 변수 x를 참조한다.
+- 각각의 함수가 호출될 때마다 x 값이 변화하므로 유의해야 한다.
+
+#### 2.3.3 루프 안에서 클로저를 활용할 때는 주의하자
+```
+function countSeconds(howMany) {
+    for (var i = 1; i <= howMany; i++) {
+        setTimeout(function() {
+              console.log(i);
+          }, i*1000);
+    }
+}
+
+countSeconds(3);
+```
+- 이 예제는 1, 2, 3을 1초 간격으로 출력하는 의도로 만든 예제이나 결과는 4가 연속 3번 1초 간격으로 출력된다.
+- **클로저**를 잘 이해했다면, 이유를 쉽게 이해할 수 있을 것이다.
+- ```setTimeout``` 함수의 인자로 들어가는 함수는 자유 변수 ```i```를 참조한다.
+- 하지만 이 함수가 실행되는 시점은 ```countSeconds()``` 함수의 실행이 종료된 이후이고, i 값은 이미 4가 된 상태이다.
+- 원하는 결과를 얻기 위한 코드는 다음과 같다.
+
+```JavaScript
+function countSeconds(howMany) {
+    for (var i = 1; i <= howMany; i++) {
+        (function(currentI) {
+            setTimeout(function() {
+                console.log(current);
+              }, currentI * 1000);
+          })(i);
+    }
+}
+
+countSeconds(3);
+```
+- 즉시 실행 함수를 실행시켜 루프 ```i``` 값을 ```currentI```에 복사해서 ```setTimeout()```에 들어갈 함수에 사용하면 원하는 결과를 얻을 수 있다.
