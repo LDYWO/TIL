@@ -205,8 +205,7 @@ console.log(factorial(20));
 - 위 예제에서 ```factorial```은 ```cache```에 접근할 수 있는 **클로저** 를 반환 받는다.
 - **클로저** 로 숨겨지는 ```cache```에는 팩토리얼을 연산한 값을 저장하고 있고 연산을 수행하는 과정에서 캐시에 저장된 값이 있으면 곧바로 그 값을 반환하고 없으면 계산 후 캐시에 저장하는 방식이다.
 
-***
-### 1.3 메모이제이션(Memoization) 패턴
+#### 1.2.3 메모이제이션(Memoization) 패턴
 - **메모이제이션** 패턴은 계산된 결과를 함수 프로퍼티 값으로 담아 놓고 나중에 사용하는 패턴이다.
 
 ```JavaScript
@@ -240,3 +239,69 @@ console.dir(Calculate);
 - 예제에서 보는 것과 같이 함수 ```Calculate()``` 프로퍼티에 ```data``` 프로퍼티를 만들어 객체를 할당하였다.
 - 이곳에 사용자는 자신이 원하는 값을 원하는 키로 저장해 놓을 수 있다.
 - ```jQuery``` 에서는 ```data()``` 라는 메소드로 이 **메모이제이션 패턴** 을 사용하였다.
+
+#### 1.2.4 피보나치 수열
+- 마지막으로 피보나치 수열을 **함수형 프로그래밍** 방식으로 구현해보자
+
+```JavaScript
+var fibo = function () {
+    var cache = {
+        '0': 0,
+        '1': 1
+    };
+
+    var func = function (n) {
+        var result;
+
+        if (typeof cache[n] === 'number')
+            result = cache[n];
+        else {
+            result = func(n-1) + func(n-2);
+            cache[n] = result;
+        }
+
+        return result;
+    };
+
+    return func;
+}();
+
+console.log(fibo(10));
+```
+
+- **클로저** 를 이용하여 ```cache```를 캐시로 활용한다는 것이 똑같다.
+- 피보나치 수열을 계산하는 함수를 인자로 받는 함수를 만들어보자
+
+```JavaScript
+var cacher = function (cache, func) {
+    var calculate = function (n) {
+        var result;
+        if (typeof (cache[n]) === 'number')
+            result = cache[n]
+        else {
+            result = func(calculate, n);
+            cache[n] = result;
+        }
+
+        return result;
+    };
+
+    return calculate;
+};
+```
+
+- ```cacher``` 함수는 사용자 정의 함수와 초기 ```cache``` 값을 받아 연산을 수행한다.
+- 사용자는 이 함수의 인자로 피보나치 수열을 연산하는 함수 혹은 팩토리얼을 연산하는 함수를 전달하여 사용한다.
+
+```JavaScript
+var fact = cacher({"0": 1}, function (func, n) {
+    return n * func(n-1);
+});
+
+var fibo = cacher({"0": 0, "1": 1}, function (func, n) {
+    return func(n-1) + func(n-2);
+});
+
+console.log(fact(10));
+console.log(fibo(10));
+```
