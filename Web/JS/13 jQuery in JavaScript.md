@@ -168,7 +168,7 @@ $(‘selector’).속성(‘값’) // setter
 ### 3.3 메소드(Method)
 * add
 ```javascript
-$(“선택자1").add("선택자2").css("background-color","yellow"); //선택자1, 선택자2 추가하여 css 공통 선언
+$("선택자1").add("선택자2").css("background-color","yellow"); // 선택자1, 선택자2 추가하여 css 공통 선언 
 ```
 * ready
 ```javascript
