@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris</title>
+
+    <link rel = "stylesheet" type = "text/css" href = "style/style.css">
+</head>
+<body onload="load();">
+<div id = "main">
+    <table width = "495">
+    <tr>
+        <td rowspan = 6 align = center>
+            <div id = tile></div>
+        </td>
+        <br>
+        <td class = "panel">
+            <div class = "caption">Level: </div>
+            <div id = "level">1</div>
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td class = " panel"></td>
+            <div class = "caption">Line Count: </div>
+            <div id = "lineCount">0</div>
+            <br>
+    </tr>
+    <tr>
+        <td class = "panel">
+            <div class = "caption">Next Block</div>
+            <div id = "nextBlock"></div>
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td class = "panel">
+            <div class = "caption">Instruction</div>
+                Move Left: , (comma)<br>
+                Move Right: / (slash><br>
+                Move Down: . (period)<br>
+                Rotate Clockwise: x <br>
+                Rotate Counterclockwise: z <br>
+        </td>
+    </tr>
+    <tr>
+        <td class = "panel" align = center>
+            <form>
+                <input type = "button" value = "Pause/Start" onClick="g_gameConsole.pauseNstart()">
+                <input type = "button" value = "Restart" onClick="g_gameConsole.begin()">
+            </form>
+        </td>
+    </tr>
+    </table>
+</div>
+
+<script type = "text/javascript" src = "js/script.js"></script>
+</body>
+</html>

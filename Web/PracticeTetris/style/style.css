@@ -1,0 +1,62 @@
+#main table
+{
+    border-collapse: separate;
+    border: 2px solid black;
+    border-spacing: 0px;
+    empty-cells: show;
+}
+
+.panel
+{
+    text-align: center;
+}
+
+#tetrisArea td, #nextBlockArea td
+{
+    border: 1px solid gray;
+    padding: 0px;
+    margin: 0px;
+    width: 20px;
+    height: 20px;
+}
+
+.caption
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.i_bock
+{
+    bacground-color: #6495ed;
+}
+
+.s_block
+{
+    background-color: #FF9824;
+}
+
+.z_block
+{
+    background-color:#FF2498;
+}
+.o_block
+{
+    background-color:#552498;
+}
+.l_block
+{
+    background-color:#892466;
+}
+.j_block
+{
+    background-color:#248966;
+}
+.t_block
+{
+    background-color:#992499;
+}
+.empty
+{
+    background-color:#FFFFFF;
+}
