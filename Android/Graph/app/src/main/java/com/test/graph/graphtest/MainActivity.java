@@ -1,8 +1,10 @@
 package com.test.graph.graphtest;
 
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -19,6 +21,8 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnChartValueSelectedListener{
 
@@ -75,49 +79,17 @@ public class MainActivity extends AppCompatActivity implements OnChartValueSelec
         YAxis leftAxis = mChart.getAxisLeft();
         // leftAxis.setTypeface(mTfLight);
         leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setAxisMaximum(100f);
-        leftAxis.setAxisMaximum(0f);
+        leftAxis.setAxisMaximum(50f);
+        leftAxis.setAxisMaximum(-50f);
         leftAxis.setDrawGridLines(true);
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
-
-        // LineChart chart = (LineChart) findViewById(R.id.chart);
-
-        /*
-        or create it in code
-
-        // programmatically create a LineChart
-        LineChart chart = new LineChart(Context); // Context 생성
-
-        // get a layout defined in xml
-        RelativeLayout rl = (RelativeLayout) findViewById(R.id.relativeLayout);
-        rl.add(chart); // add the programmatically created chart
-         */
-
-        /*
-        List<Entry> entries = new ArrayList<Entry>();
-
-        entries.add(new Entry(100.0f, 0));
-        entries.add(new Entry(50.0f, 1));
-        entries.add(new Entry(75.0f, 2));
-        entries.add(new Entry(60.0f, 3));
-
-        LineDataSet dataset = new LineDataSet(entries, "Label"); // add entries to dataset
-        dataset.setColor(00000);
-        dataset.setValueTextColor(232123); // styling
-        dataset.setAxisDependency(YAxis.AxisDependency.LEFT); // 몰라
-
-        LineData lineData = new LineData(dataset);
-        chart.setData(lineData);
-        chart.invalidate(); // refresh
-        */
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.realtime, menu);
+        getMenuInflater().inflate(R.menu.line, menu);
         return true;
     }
 
@@ -125,13 +97,141 @@ public class MainActivity extends AppCompatActivity implements OnChartValueSelec
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.actionAdd: {
-                addEntry();
+            case R.id.actionToggleValues: {
+                List<ILineDataSet> sets = mChart.getData()
+                        .getDataSets();
+
+                for (ILineDataSet iSet : sets) {
+
+                    LineDataSet set = (LineDataSet) iSet;
+                    set.setDrawValues(!set.isDrawValuesEnabled());
+                }
+
+                mChart.invalidate();
                 break;
             }
-            case R.id.actionClear: {
-                mChart.clearValues();
-                Toast.makeText(this, "Chart cleared!", Toast.LENGTH_SHORT).show();
+            case R.id.actionToggleHighlight: {
+                /*
+                if (mChart.getData() != null) {
+                    mChart.getData().setHighlightEnabled(!mChart.getData().isHighlightEnabled());
+                    mChart.invalidate();
+
+                    set.setMode(set.getMode() == LineDataSet.Mode.CUBIC_BEZIER
+                            ? LineDataSet.Mode.LINEAR
+                            : LineDataSet.Mode.CUBIC_BEZIER);
+
+                }*/
+                // 만약 스레드가 실행중이라면 활성화
+                // 스레드가 실행중이면 일시정지
+                // 스레드가 일시정지라면 재실행
+                Log.e("Thread", String.valueOf(thread.getState()));
+                break;
+            }
+            case R.id.actionToggleFilled: {
+
+                List<ILineDataSet> sets = mChart.getData()
+                        .getDataSets();
+
+                for (ILineDataSet iSet : sets) {
+
+                    LineDataSet set = (LineDataSet) iSet;
+                    if (set.isDrawFilledEnabled())
+                        set.setDrawFilled(false);
+                    else
+                        set.setDrawFilled(true);
+                }
+                mChart.invalidate();
+                break;
+            }
+            case R.id.actionToggleCircles: {
+                List<ILineDataSet> sets = mChart.getData()
+                        .getDataSets();
+
+                for (ILineDataSet iSet : sets) {
+
+                    LineDataSet set = (LineDataSet) iSet;
+                    if (set.isDrawCirclesEnabled())
+                        set.setDrawCircles(false);
+                    else
+                        set.setDrawCircles(true);
+                }
+                mChart.invalidate();
+                break;
+            }
+            case R.id.actionToggleCubic: {
+                List<ILineDataSet> sets = mChart.getData()
+                        .getDataSets();
+
+                for (ILineDataSet iSet : sets) {
+
+                    LineDataSet set = (LineDataSet) iSet;
+                    set.setMode(set.getMode() == LineDataSet.Mode.CUBIC_BEZIER
+                            ? LineDataSet.Mode.LINEAR
+                            : LineDataSet.Mode.CUBIC_BEZIER);
+                }
+                mChart.invalidate();
+                break;
+            }
+            case R.id.actionToggleStepped: {
+                List<ILineDataSet> sets = mChart.getData()
+                        .getDataSets();
+
+                for (ILineDataSet iSet : sets) {
+
+                    LineDataSet set = (LineDataSet) iSet;
+                    set.setMode(set.getMode() == LineDataSet.Mode.STEPPED
+                            ? LineDataSet.Mode.LINEAR
+                            : LineDataSet.Mode.STEPPED);
+                }
+                mChart.invalidate();
+                break;
+            }
+            case R.id.actionToggleHorizontalCubic: {
+                List<ILineDataSet> sets = mChart.getData()
+                        .getDataSets();
+
+                for (ILineDataSet iSet : sets) {
+
+                    LineDataSet set = (LineDataSet) iSet;
+                    set.setMode(set.getMode() == LineDataSet.Mode.HORIZONTAL_BEZIER
+                            ? LineDataSet.Mode.LINEAR
+                            : LineDataSet.Mode.HORIZONTAL_BEZIER);
+                }
+                mChart.invalidate();
+                break;
+            }
+            case R.id.actionTogglePinch: {
+                if (mChart.isPinchZoomEnabled())
+                    mChart.setPinchZoom(false);
+                else
+                    mChart.setPinchZoom(true);
+
+                mChart.invalidate();
+                break;
+            }
+            case R.id.animateX: {
+                mChart.animateX(3000);
+                //mChart.highlightValue(9.7f, 1, false);
+                break;
+            }
+            case R.id.animateY: {
+                mChart.animateY(3000);
+                break;
+            }
+            case R.id.animateXY: {
+                mChart.animateXY(3000, 3000);
+                break;
+            }
+
+            case R.id.actionSave: {
+                if (mChart.saveToPath("title" + System.currentTimeMillis(), "")) {
+                    Toast.makeText(getApplicationContext(), "Saving SUCCESSFUL!",
+                            Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getApplicationContext(), "Saving FAILED!", Toast.LENGTH_SHORT)
+                            .show();
+
+                // mChart.saveToGallery("title"+System.currentTimeMillis())
                 break;
             }
             case R.id.actionFeedMultiple: {
@@ -148,39 +248,50 @@ public class MainActivity extends AppCompatActivity implements OnChartValueSelec
 
         if (data != null) {
 
-            ILineDataSet set = data.getDataSetByIndex(0);
+            ILineDataSet set1 = data.getDataSetByIndex(0);
+            ILineDataSet set2 = data.getDataSetByIndex(1);
             // set.addEntry(...); // can be called as well
 
-            if (set == null) {
-                set = createSet();
-                data.addDataSet(set);
+            if (set1 == null && set2 ==  null) {
+                set1 = createSet("graph1", Color.YELLOW);
+                set2 = createSet("graph2", ColorTemplate.getHoloBlue());
+                data.addDataSet(set1);
+                data.addDataSet(set2);
             }
 
-            data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
+            data.addEntry(new Entry(set1.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
+            data.addEntry(new Entry(set2.getEntryCount(), (float) (Math.random() * 40) + 50f), 1);
+            // Global.arrayListCdBodyTable.get(nSelectedCdIndex.get(i)).getText();
+
             data.notifyDataChanged();
 
             mChart.notifyDataSetChanged();
 
-            mChart.setVisibleXRangeMaximum(120);
+            mChart.setVisibleXRangeMaximum(30);
 
             mChart.moveViewToX(data.getEntryCount());
         }
     }
 
-    private LineDataSet createSet() {
+    private LineDataSet createSet(String label, int color) {
 
-        LineDataSet set = new LineDataSet(null, "Dynamic Data");
+        LineDataSet set = new LineDataSet(null, label);
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
-        set.setColor(ColorTemplate.getHoloBlue());
+        set.setColor(color);
         set.setCircleColor(Color.WHITE);
         set.setLineWidth(2f);
         set.setCircleRadius(4f);
+        set.setDrawCircleHole(true);
         set.setFillAlpha(65);
+        set.setDrawFilled(true);
+        set.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
+        set.setFormSize(15.f);
         set.setFillColor(ColorTemplate.getHoloBlue());
         set.setHighLightColor(Color.rgb(244, 117, 117));
         set.setValueTextColor(Color.WHITE);
         set.setValueTextSize(9f);
-        set.setDrawValues(false);
+        set.setDrawValues(true);
+
         return set;
     }
 
@@ -201,12 +312,12 @@ public class MainActivity extends AppCompatActivity implements OnChartValueSelec
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i=0; i<1000; i++){
+                for (int i=0; i<10000; i++){
 
                     runOnUiThread(runnable);
 
                     try{
-                        Thread.sleep(25);
+                        Thread.sleep(70);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
