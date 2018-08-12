@@ -134,6 +134,7 @@ function print() {
   filter, includes, from을 사용해서 문자열 'e'가 포함된
   노드로 구성된 배열을 만들어서 반환하기.
   */
+  
   // 노드는 가짜 배열이기 때문에 Array.from을 써야함
 
   let list = document.querySelectorAll("li");
