@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements OnChartValueSelec
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
+
+        feedMultiple();
     }
 
     @Override
