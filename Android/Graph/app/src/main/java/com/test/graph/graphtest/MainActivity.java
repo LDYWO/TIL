@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements OnChartValueSelec
         // xl.setTypeface(mTfLight);
         xl.setTextColor(Color.WHITE);
         xl.setDrawGridLines(false);
-        xl.setAvoidFirstLastClipping(true);
+        xl.setAvoidFirstLastClipping(false);
         xl.setEnabled(true);
 
         YAxis leftAxis = mChart.getAxisLeft();
