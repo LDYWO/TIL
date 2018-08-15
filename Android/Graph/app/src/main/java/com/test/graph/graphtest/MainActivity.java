@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements OnChartValueSelec
 
             mChart.notifyDataSetChanged();
 
-            mChart.setVisibleXRangeMaximum(30);
+            mChart.setVisibleXRangeMaximum(40);
 
             mChart.moveViewToX(data.getEntryCount());
         }
