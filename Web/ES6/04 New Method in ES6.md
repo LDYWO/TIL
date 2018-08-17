@@ -151,6 +151,7 @@ print();
 
 ### 6. Object
 - 간단히 객체 생성하기
+
 #### 6.1 Destructuring
 
 #### 6.2 Set & WeakSet
