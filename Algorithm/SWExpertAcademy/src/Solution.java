@@ -26,7 +26,7 @@ public class Solution {
 
             // HashMap<Integer, Integer> ingredientList = new HashMap<>();
             ArrayList<Integer> tasteList = new ArrayList<Integer>(); // 1 ~ 1000
-            ArrayList<Integer> calList = new ArrayList<Integer>(); // 1 ~ 1000
+            ArrayList<Integer> calList = new ArrayList<Integer>();   // 1 ~ 1000
 
             ingredientNum = sc.nextInt();
             calLimit = sc.nextInt();
