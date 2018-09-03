@@ -1,10 +1,3 @@
-
-// 민기 - 햄버거 덕후
-// 민기 - 다이어트를 결심
-// 칼로리 제한된 햄버거를 먹기로 결심
-// 재료에 점수가 매겨져 있
-// 맛잇으면서 칼로리가 낮은 조합을 찾아라
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
