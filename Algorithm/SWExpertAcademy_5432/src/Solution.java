@@ -1,3 +1,5 @@
+// 레이저 절단 
+
 import java.util.Scanner;
 import java.util.Stack;
 
