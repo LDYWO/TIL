@@ -1,4 +1,5 @@
-// 레이저 절단 
+// 레이저 절단
+// Stack을 이용
 
 import java.util.Scanner;
 import java.util.Stack;
