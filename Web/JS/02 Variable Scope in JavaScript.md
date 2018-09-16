@@ -25,7 +25,7 @@ var name = "Richard";
 
 if (name) {
     name = "jack";
-    console.log(name); // Jack: 전역 변수
+    console.log(name); // jack = 전역 변수
 }
 
 // name은 여전히 전역 변수이며 if 문에서 변경되었습니다.
