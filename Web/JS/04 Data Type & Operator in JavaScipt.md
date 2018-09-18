@@ -79,7 +79,7 @@ delete.foo.name;
 console.log(foo.name); // undefined - javascript에서는 존재하지 않는 프로퍼티에 접근할 경우 undefined를 반환
 
 delete.foo;
-console.log(foo.name); // delete 함수는 객체의 프로퍼티를 삭제할 뿐, 객체를 삭제하지는 못한다.  
+console.log(foo.name); // delete 함수는 객체의 프로퍼티를 삭제할 뿐, 객체를 삭제하지는 못함
 }
 ```
 ***
