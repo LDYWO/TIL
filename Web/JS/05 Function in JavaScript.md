@@ -354,7 +354,7 @@ myObj.func1();
 var value = 100;
 
 var myObj = {
-    value = 1,
+    value: 1,
     func1: function () {
         var that = this; // 메소드 호출 패턴에 따라 메소드를 호출한 객체에 바인딩 되는 this를 저장할 변수 that
 

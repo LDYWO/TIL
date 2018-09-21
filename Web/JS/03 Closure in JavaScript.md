@@ -155,4 +155,4 @@ console.log(cruiseID.id); // 101
 
 ***
 ### 3. 참고
-- [JacaScript Is Sexy](http://javascriptissexy.com/understand-javascript-closures-with-ease/)
+- [JavaScript Is Sexy](http://javascriptissexy.com/understand-javascript-closures-with-ease/)
