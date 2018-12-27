@@ -16,7 +16,6 @@ public class Calculator {
 
         ArrayList<Integer> resultList = new ArrayList<Integer>();
 
-
         try (final BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             final int N = Integer.parseInt(br.readLine());
             for (int i = 0; i < N; i++) {

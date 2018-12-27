@@ -4,92 +4,55 @@ import java.util.*;
 
 public class TravelPath {
 
-    static boolean[] visited = new boolean[10000];
-    static ArrayList<String> answerList = new ArrayList<>();
-    static int CNT;
+    public static ArrayList<String> ANSWERLIST = new ArrayList<>();
 
     public static String[] solution (String[][] tickets) {
+
         String[] answer = {};
 
         ArrayList<Ticket> ticketList = new ArrayList<>();
+        boolean[] visited = new boolean[tickets.length];
 
         for (int i=0; i<tickets.length; i++) {
-            String starting = tickets[i][0];
-            String destination = tickets[i][1];
-
-            ticketList.add(new Ticket (starting, destination));
+            ticketList.add(new Ticket(tickets[i][0], tickets[i][1]));
         }
 
-        // destination 의 알파벳 순서대로 정렬
-        Collections.sort(ticketList, new Comparator<Ticket>() {
-            @Override
-            public int compare(Ticket o1, Ticket o2) {
-                int i = o1.destination.compareTo(o2.destination);
-                return i;
-            }
-        });
+        DFS (0, "","ICN", ticketList, visited);
+        Collections.sort(ANSWERLIST);
 
-        for (int i=0; i<ticketList.size(); i++) {
-            if (ticketList.get(i).starting.equals("ICN")) {
-                DFS (i, 1, ticketList);
+        answer = new String[ANSWERLIST.size()];
 
-                // 만약 모든 티켓을 다 사용한 경우라면 그대로 반환한다.
-                if (CNT == ticketList.size() && answerList.size() == ticketList.size() + 1) break;
-                else { // 아니라면 계속 DFS 실행
-                    init();
-                    answerList.clear();
-                    CNT = 0;
-                }
-            }
-        }
-
-        answer = new String[answerList.size()];
-
-        for (int i=0; i<answerList.size(); i++) {
-            answer[i] = answerList.get(i);
-        }
+        answer = ANSWERLIST.get(0).split(" ");
 
         return answer;
     }
 
-    public static void DFS (int index, int cnt, ArrayList<Ticket> ticketList) {
+    public static void DFS (int index, String s, String country, ArrayList<Ticket> ticketList, boolean[] visited) {
 
-        CNT = cnt;
-        visited[index] = true;
-        boolean isTrue = false;
-
-        answerList.add(ticketList.get(index).starting);
-
-        String destination = ticketList.get(index).destination;
+        s = s + country + " ";
 
         for (int i=0; i<ticketList.size(); i++) {
-            if (ticketList.get(i).starting.equals(destination) && !visited[i]) {
-                DFS(i, CNT + 1, ticketList);
-                isTrue = true;
+            if (!visited[i] && ticketList.get(i).departure.equals(country)) {
+                visited[i] = true;
+                DFS(index + 1, s, ticketList.get(i).destination, ticketList, visited);
+                // DFS 를 진행 (여기서 끝날 떄 까지 재귀), 만약 모든 방문지를 방문하지 못한 경우를 대비하여 index 설정
+                visited[i] = false;
             }
         }
 
-        if (!isTrue) answerList.add(destination);
-    }
-
-    public static void init() {
-        for (int i=0; i<visited.length; i++) {
-            visited[i] = false;
+        if (index == ticketList.size()) {
+            ANSWERLIST.add(s);
         }
     }
-
-    // DFS 로 해야할지 BFS 로 해야할지 고민을 조금 해봐야겠다.
 
     static class Ticket {
-
-        String starting;
+        String departure;
         String destination;
 
-        public Ticket (String starting, String destination) {
-            this.starting = starting;
+        public Ticket (String departure, String destination) {
+            this.departure = departure;
             this.destination = destination;
         }
-
     }
 
     public static void main (String[] args) {
@@ -101,7 +64,6 @@ public class TravelPath {
         for (String string : a) {
             System.out.println(string);
         }
-
     }
 }
 

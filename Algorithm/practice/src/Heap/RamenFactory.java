@@ -5,6 +5,19 @@ import java.util.*;
 public class RamenFactory {
     public static int solution(int stock, int[] dates, int[] supplies, int k) {
         int answer = 0;
+        int day = stock;
+        int index = 0;
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+        while (day < k) {
+            while (index < dates.length && dates[index] <= day) {
+                pq.add(supplies[index]);
+                index++;
+            }
+            answer++;
+            day += pq.poll();
+        }
 
         return answer;
     }
@@ -43,6 +56,11 @@ public class RamenFactory {
     5. dates 와 supplies 의 길이는 1 이상 20,000 이하 입니다.
     6. k 일 째에는 밀가루가 충분히 공급되기 때문에 k-1 일에 사용할 수량까지만 확보하면 됩니다.
     7. dates 에 들어있는 날짜는 오름차순 정렬되어 있습니다.
+
+    밀가루 수량을 담을 Priority Queue 를 만든다. (Descending Order)
+    전체 재고가 st 라 할 떄, 밀가루 공장은 st 만큼 공장이 가동될 수 있으므로,
+    st 가 k 보다 커지기 전 까지만 while 문을 돌린다.
+    재고가 떨어질 때 쯤, 재고가 떨어지기 전 날짜에 해당하는 공급 중에서 가장 큰 공급량을 선택한다.
 
     ...
  */

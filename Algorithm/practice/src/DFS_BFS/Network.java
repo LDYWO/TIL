@@ -7,11 +7,6 @@ public class Network {
     public static int solution(int n, int[][] computers) {
         int answer = 0;
 
-        // visited 초기화
-        for (boolean check : visted) {
-            check = false;
-        }
-
         // 노드들을 다 검사한다 1, 2, 3 ... 갯수에 맞게
         for (int i=0; i<n; i++) {
             // 만약 해당 노드를 방문하지 않았다면
