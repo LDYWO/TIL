@@ -6,23 +6,9 @@ public class PQ {
     public static int[] solution (String[] operations) {
         int[] answer = new int[2];
 
-        PriorityQueue<Pair> maxHeap = new PriorityQueue<>(new Comparator<Pair>() {
-            @Override
-            public int compare(Pair o1, Pair o2) {
-                if (o1.num > o2.num) return -1;
-                else if (o1.num < o2.num) return 1;
-                else return 0;
-            }
-        });
+        PriorityQueue<Pair> maxHeap = new PriorityQueue<>((a,b) -> b.num - a.num);
 
-        PriorityQueue<Pair> minHeap = new PriorityQueue<>(new Comparator<Pair>() {
-            @Override
-            public int compare(Pair o1, Pair o2) {
-                if (o1.num > o2.num) return 1;
-                else if (o1.num < o2.num) return -1;
-                else return 0;
-            }
-        });
+        PriorityQueue<Pair> minHeap = new PriorityQueue<>((a,b) -> a.num - b.num);
 
         boolean[] visited = new boolean[operations.length];
 

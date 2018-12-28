@@ -8,7 +8,7 @@ public class RamenFactory {
         int day = stock;
         int index = 0;
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> b - a);
 
         while (day < k) {
             while (index < dates.length && dates[index] <= day) {

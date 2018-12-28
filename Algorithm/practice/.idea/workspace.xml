@@ -6,19 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18ac49d5-3505-4dc9-bef0-af0e9a1e6aa3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Heap/DiskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Heap/PQ.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/practice/DFS_BFS/Network.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/practice/DFS_BFS/Network.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/practice/DFS_BFS/TravelPath$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/practice/DFS_BFS/TravelPath$Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/practice/DFS_BFS/TravelPath$Ticket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/practice/DFS_BFS/TravelPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/practice/DFS_BFS/TravelPath.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/practice/Heap/RamenFactory$Flour.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/practice/Heap/RamenFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/practice/Heap/RamenFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CodingTest/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodingTest/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DFS_BFS/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DFS_BFS/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DFS_BFS/TravelPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DFS_BFS/TravelPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heap/RamenFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heap/RamenFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/practice/Heap/DiskController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/practice/Heap/DiskController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/practice/Heap/DiskController$Job.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/practice/Heap/DiskController$Job.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/practice/Heap/DiskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/practice/Heap/DiskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heap/DiskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heap/DiskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heap/PQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heap/PQ.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,23 +71,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="21" />
+          <entry key="java" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="21" />
+          <entry key="JAVA" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="2" />
-          <entry key="java" value="21440" />
+          <entry key="java" value="23279" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="21440" />
+          <entry key="JAVA" value="23279" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -114,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Heap/DiskController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+            <state relative-caret-position="561">
+              <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -159,11 +152,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Heap/PQ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="43" lean-forward="true" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+            <state relative-caret-position="250">
+              <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -247,9 +240,10 @@
         <option value="$PROJECT_DIR$/src/Heap/PriorityQueue.java" />
         <option value="$PROJECT_DIR$/src/Heap/MoreSpicy.java" />
         <option value="$PROJECT_DIR$/src/Heap/RamenFactory.java" />
-        <option value="$PROJECT_DIR$/src/Heap/PQ.java" />
         <option value="$PROJECT_DIR$/src/CodingTest/Calculator.java" />
+        <option value="$PROJECT_DIR$/src/Heap/DiskControllerPractice.java" />
         <option value="$PROJECT_DIR$/src/Heap/DiskController.java" />
+        <option value="$PROJECT_DIR$/src/Heap/PQ.java" />
       </list>
     </option>
   </component>
@@ -337,7 +331,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545898410064" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546000660178" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -357,7 +351,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DiskController">
+  <component name="RunManager" selected="Application.RamenFactory">
     <configuration name="DiskController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Heap.DiskController" />
       <module name="practice" />
@@ -442,9 +436,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DiskController" />
-        <item itemvalue="Application.PQ" />
         <item itemvalue="Application.RamenFactory" />
+        <item itemvalue="Application.PQ" />
+        <item itemvalue="Application.DiskController" />
         <item itemvalue="Application.Network" />
         <item itemvalue="Application.TravelPath" />
       </list>
@@ -473,7 +467,7 @@
       <workItem from="1542547645786" duration="34972000" />
       <workItem from="1542981169559" duration="102587000" />
       <workItem from="1544730766144" duration="32235000" />
-      <workItem from="1545052996370" duration="40887000" />
+      <workItem from="1545052996370" duration="45427000" />
     </task>
     <servers />
   </component>
@@ -483,10 +477,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="272132000" />
+    <option name="totallyTimeSpent" value="276672000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="840" y="23" width="840" height="1027" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974093" weight="0.16239317" />
@@ -497,7 +491,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.50259066" side_tool="true" weight="0.3191721" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.25347593" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -744,24 +738,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Heap/PQ.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="43" lean-forward="true" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Stack/Stick.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="53" lean-forward="true" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Stack/Printer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -772,10 +752,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Heap/DiskControllerPractice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Heap/DiskController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+        <state relative-caret-position="561">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Stack/Printer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Heap/PQ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
         </state>
       </provider>
     </entry>
