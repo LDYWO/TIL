@@ -71,6 +71,7 @@ public class DiskController {
             this.requiredTime = requiredTime;
         }
     }
+
     public static void main (String[] args) {
         int[][] jobs = {{0,3}, {1,9}, {2,6}};
         // int[][] jobs = {{0, 9}, {0, 4}, {0, 5}, {0, 7}, {0, 3}};
