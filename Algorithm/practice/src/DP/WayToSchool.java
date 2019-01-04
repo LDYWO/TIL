@@ -5,32 +5,24 @@ public class WayToSchool {
     public int solution (int m, int n, int[][] puddles) {
         int answer = 0;
 
-        WAY = new int[m][n];
-
-        return answer;
-    }
-
-    public static int DP (int[][] puddles) {
-
-        WAY[0][0] = 0;
+        WAY = new int[m+1][n+1];
+        WAY[m][n] = 1;
 
         for (int i=0; i<puddles.length; i++) {
             WAY[puddles[i][0]][puddles[i][1]] = -1;
         }
 
-        for (int i=0; i<WAY.length; i++) {
-            if (WAY[i][0] != -1) WAY[i][0] = 1;
-        }
+        return answer;
+    }
 
-        for (int i=0; i<WAY[0].length; i++) {
-            if (WAY[0][i] != -1) WAY[0][i] = 1;
-        }
+    public static int DP () {
+        for (int i=1; i<=WAY.length; i++) {
+            for (int j=1; j<=WAY[i].length; j++) {
 
-        for (int i=1; i<WAY.length; i++) {
-            for (int j=1; j<WAY[i].length; j++) {
-                
             }
         }
+
+        return 0;
     }
 }
 
