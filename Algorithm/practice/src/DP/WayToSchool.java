@@ -24,6 +24,8 @@ public class WayToSchool {
 
         return 0;
     }
+
+    // DP 함수를 실행시키면서 전체적으로 어디가 물에 잠겼는지 확인해야한다.
 }
 
 /*
