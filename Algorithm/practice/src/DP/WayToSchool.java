@@ -1,31 +1,42 @@
 package DP;
 
 public class WayToSchool {
-    private static int[][] WAY;
+    private static int[][] MAP;
+
     public int solution (int m, int n, int[][] puddles) {
         int answer = 0;
 
-        WAY = new int[m+1][n+1];
-        WAY[m][n] = 1;
+        /*
+            문제 푸는 순서
+
+            1. 2차원 배열 생성
+            2. puddles set up
+            3. 맵 순회
+            4. 1,0000000007로 나누기
+         */
+
+        MAP = new int[m+1][n+1];
 
         for (int i=0; i<puddles.length; i++) {
-            WAY[puddles[i][0]][puddles[i][1]] = -1;
+            MAP[puddles[i][0]][puddles[i][1]] = -1;
         }
 
-        return answer;
-    }
+        MAP[1][1] = 1;
 
-    public static int DP () {
-        for (int i=1; i<=WAY.length; i++) {
-            for (int j=1; j<=WAY[i].length; j++) {
-
+        for (int i=1; i<=m; i++) {
+            for (int j=1; j<=n; j++) {
+                if (MAP[i][j] == -1) {
+                    MAP[i][j] = 0;
+                    continue;
+                }
+                if (i != 1 || j != 1) MAP[i][j] = (MAP[i-1][j] + MAP[i][j-1])%1000000007;
             }
         }
 
-        return 0;
-    }
+        answer = MAP[m][n]%1000000007;
 
-    // DP 함수를 실행시키면서 전체적으로 어디가 물에 잠겼는지 확인해야한다.
+        return answer;
+    }
 }
 
 /*

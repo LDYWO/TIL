@@ -19,8 +19,8 @@ public class IntegerTrialngle {
         COST[0][0] = triangle[0][0];
 
         for (int i=1; i<triangle.length; i++) {
-            COST[i][0] = COST[i-1][0] + triangle[i][0];
-            COST[i][i] = COST[i-1][i] + triangle[i][i];
+            COST[i][0] = COST[i-1][0] + triangle[i][0]; // 각 층의 첫 번째 노드
+            COST[i][i] = COST[i-1][i] + triangle[i][i]; // 각 층의 마지막 노드
         }
 
         for (int i=1; i<triangle.length; i++) {
