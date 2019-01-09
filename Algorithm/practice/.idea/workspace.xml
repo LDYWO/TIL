@@ -5,13 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/DFS_BFS/DFS_BFS.java" line="177" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18ac49d5-3505-4dc9-bef0-af0e9a1e6aa3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DP/CardGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/practice/BruteForce/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DP/IntegerTrialngle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DP/IntegerTrialngle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DP/WayToSchool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DP/WayToSchool.java" afterDir="false" />
-    </list>
+    <list default="true" id="18ac49d5-3505-4dc9-bef0-af0e9a1e6aa3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,12 +75,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="2" />
-          <entry key="java" value="40433" />
+          <entry key="java" value="40454" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="40433" />
+          <entry key="JAVA" value="40454" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -145,8 +139,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DP/CardGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+            <state relative-caret-position="357">
+              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -309,7 +303,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546942658517" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547012334245" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -446,7 +440,7 @@
       <workItem from="1542547645786" duration="34972000" />
       <workItem from="1542981169559" duration="102587000" />
       <workItem from="1544730766144" duration="32235000" />
-      <workItem from="1545052996370" duration="75991000" />
+      <workItem from="1545052996370" duration="77091000" />
     </task>
     <servers />
   </component>
@@ -456,13 +450,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307236000" />
+    <option name="totallyTimeSpent" value="308336000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974093" visible="true" weight="0.06898657" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974093" weight="0.060170393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -471,7 +464,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.50259066" side_tool="true" weight="0.31829575" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1540107" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28983957" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -799,8 +792,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DP/CardGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+        <state relative-caret-position="357">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
         </state>
       </provider>
     </entry>
