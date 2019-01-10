@@ -4,16 +4,24 @@ public class CardGame {
     private static int[][] DP;
     public static int solution(int[] left, int[] right) {
         int answer = 0;
-
+        int N = left.length;
         /*
-            최고 점을 얻기 위한 방법
-            - 카드를 버리는 방법
-                - 왼쪽 카드만 -> 이 경우는 점수 X
-                - 왼쪽, 오른쪽 다 -> 이 경우는 점수 X
-                - 왼쪽보다 오른쪽이 더 작을 경우 오른쪽을 버린다 -> 오른쪽 카드 점수 얻음
+            왼쪽 카드만 버리거나 왼쪽 카드와 오른쪽 카드를 둘 다 버린다. -> 점수 X
+            왼쪽 카드보다 오른쪽 카드가 작을 때,  오른쪽 카드를 버리고 점수를 얻는다.
+            어느 쪽이든 남은 카드가 없다면 게임 끝난다. 어느 쪽이든 남은 카드가 없다면 게임이 끝난다.
          */
 
         DP = new int[left.length+1][right.length+1]; // DP 2차원 배열 초기화, 왼쪽 카드 더미 맨 위가 i번째 카드이고, 오른쪽 더미 맨 위 카드가 j 번쨰일 때 최대 점수, 작은 문제로 쪼개기
+
+        for (int i=0; i<N; i++) {
+            DP[0][i] = -1;
+        }
+
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<N; j++) {
+
+            }
+        }
 
         return answer;
     }
