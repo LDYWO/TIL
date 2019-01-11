@@ -5,10 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/DFS_BFS/DFS_BFS.java" line="177" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18ac49d5-3505-4dc9-bef0-af0e9a1e6aa3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DP/CardGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DP/CardGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="18ac49d5-3505-4dc9-bef0-af0e9a1e6aa3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -267,10 +264,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
+    <option name="x" value="840" />
     <option name="y" value="23" />
-    <option name="width" value="960" />
-    <option name="height" value="1057" />
+    <option name="width" value="840" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -447,7 +444,7 @@
       <workItem from="1542981169559" duration="102587000" />
       <workItem from="1544730766144" duration="32235000" />
       <workItem from="1545052996370" duration="77837000" />
-      <workItem from="1547020396994" duration="1671000" />
+      <workItem from="1547020396994" duration="2212000" />
     </task>
     <servers />
   </component>
@@ -457,10 +454,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310753000" />
+    <option name="totallyTimeSpent" value="311294000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="23" width="960" height="1057" extended-state="0" />
+    <frame x="840" y="23" width="840" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974093" weight="0.060170393" />
