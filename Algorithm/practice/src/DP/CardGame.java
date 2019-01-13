@@ -2,28 +2,38 @@ package DP;
 
 public class CardGame {
     private static int[][] DP;
+    private static int N;
+    private static int ANSWER;
+
     public static int solution(int[] left, int[] right) {
-        int answer = 0;
-        int N = left.length;
-        /*
-            왼쪽 카드만 버리거나 왼쪽 카드와 오른쪽 카드를 둘 다 버린다. -> 점수 X
-            왼쪽 카드보다 오른쪽 카드가 작을 때,  오른쪽 카드를 버리고 점수를 얻는다.
-            어느 쪽이든 남은 카드가 없다면 게임 끝난다. 어느 쪽이든 남은 카드가 없다면 게임이 끝난다.
-         */
 
-        DP = new int[left.length+1][right.length+1]; // DP 2차원 배열 초기화, 왼쪽 카드 더미 맨 위가 i번째 카드이고, 오른쪽 더미 맨 위 카드가 j 번쨰일 때 최대 점수, 작은 문제로 쪼개기
+        // 최대 카드 뭉치의 값 설정
+        N = left.length;
 
-        for (int i=0; i<N; i++) {
-            DP[0][i] = -1;
+        // DP 메모이제이션을 할 2차원 배열 선언 DP[i][j] 가 의미하는 바는 왼쪽 카드가 i이고 오른쪽 카드가 j일 떄 얻을 수 있는 최대 값
+        DP = new int[2001][2001];
+
+        solve(left, right, 0, 0);
+
+        return ANSWER;
+    }
+
+    public static int solve (int[] left, int[] right, int i, int j) {
+
+        if (i >= N || j>= N) {
+            DP[i][j] = 0;
+            return DP[i][j];
         }
 
-        for (int i=0; i<N; i++) {
-            for (int j=0; j<N; j++) {
-
-            }
+        if (left[i] > right[j]) {
+            DP[i][j] = Math.max(DP[i][j], solve(left, right, i, j+1) + right[j]);
+        } else {
+            DP[i][j] = Math.max(solve(left, right, i+1, j), solve(left, right, i+1, j+1));
         }
 
-        return answer;
+        ANSWER = DP[i][j];
+
+        return DP[i][j];
     }
 
     public static void main (String[] args) {
