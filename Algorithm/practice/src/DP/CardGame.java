@@ -1,39 +1,27 @@
 package DP;
 
 public class CardGame {
-    private static int[][] DP;
-    private static int N;
-    private static int ANSWER;
-
     public static int solution(int[] left, int[] right) {
 
         // 최대 카드 뭉치의 값 설정
-        N = left.length;
+        int NL = left.length;
+        int NR = right.length;
 
         // DP 메모이제이션을 할 2차원 배열 선언 DP[i][j] 가 의미하는 바는 왼쪽 카드가 i이고 오른쪽 카드가 j일 떄 얻을 수 있는 최대 값
-        DP = new int[2001][2001];
+        int[][] DP = new int[NL+1][NR+1]; // 메모리 효율성도 중요하다.
 
-        solve(left, right, 0, 0);
-
-        return ANSWER;
-    }
-
-    public static int solve (int[] left, int[] right, int i, int j) {
-
-        if (i >= N || j>= N) {
-            DP[i][j] = 0;
-            return DP[i][j];
+        // 첫 번쟤 요소를 비교 대상으로 삼으려면 반복문의 시작 인덱스를 1로 잡고 전체 길이와 같을 때까지 반복문을 돌리면 된다.
+        for (int i=1; i<=left.length; i++) {
+            for (int j=1; j<=right.length; j++) {
+                DP[i][j] = Math.max(DP[i-1][j-1], DP[i-1][j]);
+                if (left[i-1] > right[j-1]) {
+                    DP[i][j] = DP[i][j-1] + right[j-1];
+                }
+            }
         }
 
-        if (left[i] > right[j]) {
-            DP[i][j] = Math.max(DP[i][j], solve(left, right, i, j+1) + right[j]);
-        } else {
-            DP[i][j] = Math.max(solve(left, right, i+1, j), solve(left, right, i+1, j+1));
-        }
+        return DP[NL][NR];
 
-        ANSWER = DP[i][j];
-
-        return DP[i][j];
     }
 
     public static void main (String[] args) {

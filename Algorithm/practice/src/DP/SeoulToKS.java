@@ -2,39 +2,46 @@ package DP;
 
 public class SeoulToKS {
     private static int[][] DP;
-    private static boolean[][] VISIT;
-    private static int N;
     private static int TIME;
-    public int solution (int K, int[][] travel) {
+
+    public static int solution (int K, int[][] travel) {
 
         TIME = K;
-        N = travel.length;
-        DP = new int[K+1][N+1];
-        VISIT = new boolean[K+1][N+1];
 
-        return 1;
+        DP = new int[K+1][travel.length + 1];
+
+        return DFS(travel, 0, 0);
     }
 
-    public static int DFS (int[][] travel, int money, int time, int cnt) {
+    private static int DFS (int[][] travel, int time, int cnt) {
 
-        // DFS 를 돌리는데 cnt 가 끝까지 가야하고, 시간도 제한 시간 안에 들어와야 한다.
-        if (cnt == N && TIME >= time) {
-            return money;
+        if (cnt == travel.length) {
+            return 0;
         }
 
-        if (VISIT[time][cnt] != false) {
-            DP[time][cnt] = DP[time][cnt] + money;
+        if (DP[time][cnt] != 0) {
+            return DP[time][cnt];
         }
 
-        int val = -1;
-        val = Math.max(val, DFS(travel, money+travel[cnt][1], time + travel[cnt][0], cnt + 1));
-        val = Math.max(val, DFS(travel, money+travel[cnt][3], time + travel[cnt][2], cnt + 1));
+        if (time + travel[cnt][0] <= TIME) {
+            DP[time][cnt] = DFS(travel, time + travel[cnt][0], cnt + 1) + travel[cnt][1];
+        }
 
-        if (cnt == N && TIME <= time) {
-
+        if (time + travel[cnt][2] <= TIME) {
+            DP[time][cnt] = Math.max(DP[time][cnt], DFS(travel, time + travel[cnt][2], cnt + 1) + travel[cnt][3]);
         }
 
         return DP[time][cnt];
+    }
+
+    public static void main (String[] args) {
+
+        int K = 1650;
+        int[][] travel = {{500, 200, 200, 100}, {800, 370, 300, 120}, {700, 250, 300, 90}};
+
+        int a = solution(K, travel);
+
+        System.out.println(a);
     }
 }
 
