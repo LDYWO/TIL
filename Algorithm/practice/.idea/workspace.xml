@@ -5,13 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/DFS_BFS/DFS_BFS.java" line="177" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18ac49d5-3505-4dc9-bef0-af0e9a1e6aa3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DP/SeoulToKS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DP/Theft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/practice/DP/CardGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/practice/DP/CardGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DP/CardGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DP/CardGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="18ac49d5-3505-4dc9-bef0-af0e9a1e6aa3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -327,7 +321,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/ldy/Documents/GitHub/Algorithm/practice/src/DP/CardGame.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547307679914" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547383972118" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -465,7 +459,7 @@
       <workItem from="1542981169559" duration="102587000" />
       <workItem from="1544730766144" duration="32235000" />
       <workItem from="1545052996370" duration="77837000" />
-      <workItem from="1547020396994" duration="26111000" />
+      <workItem from="1547020396994" duration="27128000" />
     </task>
     <servers />
   </component>
@@ -475,7 +469,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="335193000" />
+    <option name="totallyTimeSpent" value="336210000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="23" width="960" height="1057" extended-state="0" />
