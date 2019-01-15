@@ -15,50 +15,49 @@ public class BestAlbum {
         }
     }
 
-    public static int[] solution(String[] genres, int[] plays) {
-
+    public static int[] solution (String[] genres, int[] plays) {
         int[] answer = {};
 
-        HashMap<String, Integer> hm = new HashMap<>();
+        HashMap<String, Integer> hm1 = new HashMap<>();
         HashMap<Integer, Integer> hm2 = new HashMap<>();
-        ArrayList<Integer> answerList = new ArrayList<>();
+        ArrayList<Integer> arrayList = new ArrayList<>();
 
-        // 각 장르 별로 몇 회 재생되었는지 정보를 가지고 있는 해시맵
+        // 가장 많이 재생된 장르순서대로 정렬하기 위한 해시맵 추가
         for (int i=0; i<genres.length; i++) {
-            hm.put(genres[i], hm.getOrDefault(genres[i], 0) + plays[i]);
-            hm2.put(i,plays[i]);
+            hm1.put(genres[i], hm1.getOrDefault(genres[i], 0) + plays[i]);
+            hm2.put(i, plays[i]);
         }
 
-        // hm, hm2 정렬
-        Map<Object, Object> valueSort = sortByValue(hm, true);
+        Map<Object, Object> valueSort = sortByValue(hm1, true); // isASC = 내림차순 정렬
         Map<Object, Object> complexSort = sortByValue(sortByKey(hm2, false), true);
 
         for (Object key : valueSort.keySet()) {
             String genre = (String)key;
             int count = 0;
-            for (Object keys : complexSort.keySet()) {
-                if (count == 2) {
-                    break;
-                } else {
-                    Integer keyInt = (Integer)keys;
-                    if (genres[keyInt].equals(genre)) {
-                        answerList.add(keyInt);
-                        count++;
-                    }
+
+            for (Object comkey : complexSort.keySet()) {
+                if (count == 2) break;
+
+                Integer id = (Integer)comkey;
+                if (genres[id].equals(genre)) {
+                    // 재생 횟수 순으로 정렬, 같으면 아이디가 작은 순으로 정렬한 맵을 순회하면서
+                    // 해당 아이디와 총 재생횟수가 많은 장르 순으로 일치한다면 재생 목록에 순서대로 추가한다.
+                    arrayList.add(id);
+                    count++;
                 }
             }
         }
 
-        answer = new int[answerList.size()];
+        answer = new int[arrayList.size()];
 
-        for (int i=0; i<answerList.size(); i++) {
-            answer[i] = answerList.get(i);
+        for (int i=0; i<arrayList.size(); i++) {
+            answer[i] = arrayList.get(i);
         }
 
         return answer;
     }
 
-    public static Map<Object, Object> sortByKey(final Map map, boolean isASC) {
+    public static Map<Object, Object> sortByKey (final Map map, boolean isASC) {
         if (isASC) {
             return new TreeMap<Object, Object>(map);
         } else {
@@ -68,12 +67,12 @@ public class BestAlbum {
         }
     }
 
-    public static Map<Object, Object> sortByValue(final Map map, boolean isASC) {
+    public static Map<Object, Object> sortByValue (final Map map, boolean isASC) {
         List list = new LinkedList(map.entrySet());
 
-        Collections.sort(list, new Comparator() {
+        Collections.sort(list, new Comparator(){
             public int compare (Object o1, Object o2) {
-                return ((Comparable) ((Map.Entry)(o1)).getValue()).compareTo((((Map.Entry)(o2)).getValue()));
+                return ((Comparable) ((Map.Entry)(o1)).getValue()).compareTo(((Map.Entry)(o2)).getValue());
             }
         });
 
@@ -83,8 +82,8 @@ public class BestAlbum {
 
         HashMap sortedHashMap = new LinkedHashMap();
 
-        for (Iterator it = list.iterator(); it.hasNext(); ) {
-            Map.Entry entry = (Map.Entry) it.next();
+        for (Object obj : list) {
+            Map.Entry entry = (Map.Entry)obj;
             sortedHashMap.put(entry.getKey(), entry.getValue());
         }
 
