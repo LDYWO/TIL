@@ -1,0 +1,12 @@
+*.idea
+*.class
+*.com
+*.dll
+*.exe
+*.o
+*.so
+
+*.log
+
+.metadata
+bin/
