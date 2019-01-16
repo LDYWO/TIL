@@ -6,27 +6,24 @@ public class MoreSpicy {
     public int solution (int[] scoville, int K) {
         int answer = 0;
 
-        Queue<Integer> pq = new PriorityQueue<>();
+        Queue<Integer> pq = new PriorityQueue<>((a, b) -> a-b); // a-b 인 경우가 minHeap 이다.
 
-        for (int integer : scoville) {
-            pq.offer(integer);
+        for (int i : scoville) {
+            pq.offer(i);
         }
 
-        while (pq.size() > 1) {
-            if (pq.peek() >= K) {
-                break;
+        while (!pq.isEmpty() && pq.peek() < K) {
+
+            if (pq.size() == 1) {
+                return -1;
             }
 
-            int s1 = pq.poll();
-            int s2 = pq.poll();
-            int addOn = s1 + s2*2;
+            int a = pq.poll();
+            int b = pq.poll();
 
-            pq.offer(addOn);
-
+            pq.offer(a + b*2);
             answer++;
         }
-
-        if (pq.peek() < K) answer = -1;
 
         return answer;
     }

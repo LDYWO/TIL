@@ -94,3 +94,33 @@
     return sortedHashMap;
   }
 ```
+
+## 2. Stack (스택) & Queue (큐)
+### 2.1. 스택 및 큐 선언
+- 자바에서의 큐는 인터페이스 구현이기 때문에 ```offer``` 와 ```poll``` 과 같은 기본 메소드를 구현해주어야 한다.
+- 따라서 ```Deque``` 를 선언해 ```ArrayDeque``` 로 인스턴스를 생성한다.
+
+```java
+import java.util.*;
+
+Stack st = new Stack(); // 기본적인 스택 선언
+Stack<Integer> Integerst = new Stack<>(); // 정수형 값을 담는 스택 선언
+Deque<Integer> deque = new ArrayDeque<>(); // 정수형 값을 담는 큐 선언
+```
+
+### 2.2. 요소 삽입 및 반환
+- **스택** 은 ```push``` 와 ```pop```을 통해 삽입과 반환을 구현한다.
+- **큐** 는 ```offer``` 와 ```poll```을 통해 삽입과 반환을 구현한다.
+
+```Java
+st.push(1); // Stack st 에 1을 삽입
+st.pop(); // st라는 스택에 들어간 자료형 중 가장 앞에있는 요소를 제거하고 반환한다.
+
+deque.offer(1); //  deque에 1을 삽입
+System.out.println(deque.peek()); // deque의 가장 앞 요소를 확인하여 반환한다.
+deque.poll(); // deque의 가장 앞에 있는 요소를 제거하고 반환한다.
+```
+
+### 2.2. 응용
+- **스택** 과 **큐** 는 딱히 응용이랄 것이 없다.
+- 기본적인 ```FIFO```, ```FILO``` 구조에 맞추어 적당히 구현해주면 된다.

@@ -3,78 +3,72 @@ package Heap;
 import java.util.*;
 
 public class PQ {
+    public static boolean[] visited;
     public static int[] solution (String[] operations) {
         int[] answer = new int[2];
 
-        PriorityQueue<Pair> maxHeap = new PriorityQueue<>((a,b) -> b.num - a.num);
+        PriorityQueue<Pair> maxHeap = new PriorityQueue<>((a,b) -> b.num-a.num);
+        PriorityQueue<Pair> minHeap = new PriorityQueue<>((a,b) -> a.num-b.num);
 
-        PriorityQueue<Pair> minHeap = new PriorityQueue<>((a,b) -> a.num - b.num);
-
-        boolean[] visited = new boolean[operations.length];
+        visited = new boolean[operations.length];
 
         for (int i=0; i<operations.length; i++) {
             String[] op = operations[i].split(" ");
 
             if (op[0].equals("I")) {
-                // maxHeap 과 minHeap 에 주어진 숫자를 삽입
-                maxHeap.offer(new Pair (i, Integer.parseInt(op[1])));
-                minHeap.offer(new Pair (i, Integer.parseInt(op[1])));
+                // 숫자 삽입
+                maxHeap.offer(new Pair(Integer.parseInt(op[1]), i));
+                minHeap.offer(new Pair(Integer.parseInt(op[1]), i));
             } else if (op[1].equals("1")) {
-                while (!maxHeap.isEmpty()) {
-                    if (visited[maxHeap.peek().index]) {
-                        maxHeap.poll();
-                    } else {
-                        Pair pair = maxHeap.poll();
-                        visited[pair.index] = true;
-                        break;
-                    }
-                }
-            } else if (op[1].equals("-1")){
-                while (!minHeap.isEmpty()) {
-                    if (visited[minHeap.peek().index]) {
-                        minHeap.poll();
-                    } else {
-                        Pair pair = minHeap.poll();
-                        visited[pair.index] = true;
-                        break;
-                    }
-                }
+                // 최댓 값 삭제
+                pqMethod(maxHeap);
+            } else {
+                // 최솟 값 삭제
+                pqMethod(minHeap);
             }
         }
 
-        while (!maxHeap.isEmpty()) {
-            if (visited[maxHeap.peek().index]) {
-                maxHeap.poll();
+        answer[0] = MaxOrMin(maxHeap);
+        answer[1] = MaxOrMin(minHeap);
+
+        return answer;
+    }
+
+    public static void pqMethod(PriorityQueue<Pair> pq) {
+        while (!pq.isEmpty()) {
+            if (visited[pq.peek().index]) {
+                pq.poll();
             } else {
-                answer[0] = maxHeap.poll().num;
+                Pair pair = pq.poll();
+                visited[pair.index] = true;
                 break;
             }
         }
+    }
 
-        while (!minHeap.isEmpty()) {
-            if (visited[minHeap.peek().index]) {
-                minHeap.poll();
+    public static int MaxOrMin (PriorityQueue<Pair> pq) {
+
+        int answer = 0;
+
+        while (!pq.isEmpty()) {
+            if (visited[pq.peek().index]) {
+                pq.poll();
             } else {
-                answer[1] = minHeap.poll().num;
+                answer = pq.poll().num;
                 break;
             }
-        }
-
-        if (minHeap.isEmpty() || maxHeap.isEmpty()) {
-            answer[0] = 0;
-            answer[1] = 0;
         }
 
         return answer;
     }
 
     static class Pair {
-        int index;
         int num;
+        int index;
 
-        public Pair (int index, int num) {
-            this.index = index;
+        public Pair (int num, int index) {
             this.num = num;
+            this.index = index;
         }
     }
 

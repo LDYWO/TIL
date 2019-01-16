@@ -17,44 +17,36 @@ public class Tower {
     public static int[] solution (int[] heights) {
         int[] answer = {};
 
-        Stack<Integer> towerStack = new Stack<>();
-        Stack<Integer> answerStack = new Stack<>();
-        Stack<Integer> towerStackClone = new Stack<>();
+        Stack<Integer> st = new Stack<>();
+        Stack<Integer> ans = new Stack<>();
 
-        for (int i : heights) {
-            towerStack.push(i);
+        // 스택에 height 삽입
+        for (int height : heights) {
+            st.push(height);
         }
 
-        while (!towerStack.isEmpty()) {
-            int num = towerStack.pop();
-            int count = 0;
-            boolean is = false;
-            // 나머지 타워 스택을 반복문으로 돌면서 검사한다.
-            // 만약에 검사 기준 높이보다 높은 타워가 있다면 그 타워의 위치를 반환한다.
+        while (!st.isEmpty()) {
+            int out = st.pop();
 
-            towerStackClone = (Stack<Integer>) towerStack.clone();
-            Collections.reverse(towerStackClone);
+            boolean isCheck = false;
+            int index = st.size()-1;
 
-            // 거꾸로 검사하는 방법?
-            for (int i : towerStackClone) {
-                count++;
-                if (i > num) {
-                    is = true;
+            while(index >= 0) {
+                if (heights[index] > out) {
+                    isCheck = true;
+                    ans.push(index+1);
                     break;
                 }
+                index--;
             }
 
-            if (is) {
-                answerStack.push(towerStack.size() - count + 1);
-            } else {
-                answerStack.push(0);
-            }
+            if(!isCheck) ans.push(0);
         }
 
-        answer = new int[answerStack.size()];
+        answer = new int[ans.size()];
 
         for (int i=0; i<answer.length; i++) {
-            answer[i] = answerStack.pop();
+            answer[i] = ans.pop();
         }
 
         return answer;

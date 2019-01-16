@@ -19,7 +19,7 @@ public class Printer {
         Deque<Integer> deque = new ArrayDeque<>();
 
         for (int i=0; i<priorities.length; i++) {
-            deque.add(priorities[i]);
+            deque.offer(priorities[i]);
         }
 
         //TODO! 주의해야할 사항은 큐는 동적으로 빼면서 추가하는 사항이 불가능하다. 아래와 같은 경우는 deque 에서 poll 을 루프문 내에서 1번만 실행이 가능하다.
