@@ -159,3 +159,115 @@ deque.poll(); // deque의 가장 앞에 있는 요소를 제거하고 반환한�
   // 별개의 영역이지만 힙 문제 중 디스크 컨트롤러 문제에서
   // 기본 숫자 배열 정렬하는 방법을 구현한 코드이다.
 ```
+
+## 4. 정렬 (Sorting)
+- 정렬을 하는 방법은 크게 3가지가 있다.
+  1. Arrays.sort();
+  2. Collections.sort();
+  3. new Comparator<>();
+
+- 단순한 오름차순 정렬은 1, 2를 이용한다.
+- 내림차순 정렬은 2번을 이용하고 ```Collections.reverse()``` 를 이용한다.
+- 그 외 조건부 정렬을 구현하려고 할 때는 Comparator를 이용한다.
+
+### 4.1. 정렬의 구현
+```Java
+  Arrays.sort(jobs); // 오름차순 정렬
+  Collections.sort(arrayList); // 오름차순 정렬
+  Collections.reverse(arrayList); // 역순, 즉 내림차순 정렬
+```
+
+### 4.2. 응용
+```Java
+  Arrays.sort(num, new Comparator<String>() {
+    @Override
+    public int compare(String o1, String o2) {
+      return (o2 + o1).compareTo(o1 + o2);
+    }
+  });
+  // 문자열 두 개를 이어 붙인 것 중에 큰 순서대로 정렬
+  // 내림차순 (디폴트가 오름차순이기 때문에) return 을 역순으로!
+```
+
+## 5. 완전 탐색 (BruteForce)
+- 모든 케이스를 하나하나 다 탐색하는 방법이다.
+- 주로 반복문으로 순회를 한다.
+
+### 5.1. 응용
+- 완전 탐색은 응용 예제를 중심으로 살펴보자
+
+#### 5.1.1 모의고사
+```Java
+  int[] answer1 = {1, 2, 3, 4, 5}; // 찍는 순서의 배열을 넣는다.
+  int index1 = i%5 // 0 - 4 까지의 나머지가 나오기 때문에 이것을 위의 정수 배열의 인덱스로 접근한다.
+```
+
+#### 5.1.2 소수 찾기
+```Java
+  // 모든 숫자의 조합을 찾기 위해서 DFS를 활용하여 순열을 구현한다.
+
+  public static void func (String s, String number, ArrayList<String> stringArrayList) {
+    if (number.length() == 0) {
+      if (!s.equals(""))
+        stringArrayList.add(s):
+    } else {
+      for (int i=0; i<number.length(); i++) {
+        func(s + number.charAt(i), number.substring(0, i) + number.substring(i+1, number.length()), stringArrayList);
+        for (int i=0; i<number.length(); i++) {
+          func(s, number.substring(0, i) + number.substring(i+1, number.length()), stringArrayList);
+        }
+      }
+    }
+  }
+
+  // 그 후에 중복된 값을 HashSet을 이용하여 거르고
+  // 순회를 하면서 소수를 찾는다.
+```
+
+#### 5.1.3 숫자 야구
+- 숫자 야구는 중복되지 않는 0 - 9까지의 숫자의 조합이기 떄문에 3중 반복문을 돌린다.
+- 중간에 중복되지 않는 경우이기 때문에 각 자리 숫자가 같아지는 경우는 ```continue``` 키워드를 사용하여 넘긴다.
+
+```Java
+for (int i=1; i<10; i++) {
+   for (int j=1; j<10; j++) {
+       if (j==i) continue;
+       for (int k=1; k<10; k++) {
+           if (k==j || k==i) continue;
+
+           boolean isTrue = true;
+
+           for (int t=0; t<baseball.length; t++) {
+
+               String num = String.valueOf(baseball[t][0]);
+               int strike = 0;
+               int ball = 0;
+
+               if (i == Integer.parseInt(String.valueOf(num.charAt(0)))) {
+                   strike++;
+               } else if (i == Integer.parseInt(String.valueOf(num.charAt(1))) || i == Integer.parseInt(String.valueOf(num.charAt(2)))) {
+                   ball++;
+               }
+
+               if (j == Integer.parseInt(String.valueOf(num.charAt(1)))) {
+                   strike++;
+               } else if (j == Integer.parseInt(String.valueOf(num.charAt(0))) || j == Integer.parseInt(String.valueOf(num.charAt(2)))) {
+                   ball++;
+               }
+
+               if (k == Integer.parseInt(String.valueOf(num.charAt(2)))) {
+                   strike++;
+               } else if (k == Integer.parseInt(String.valueOf(num.charAt(0))) || k == Integer.parseInt(String.valueOf(num.charAt(1)))) {
+                   ball++;
+               }
+
+               if (strike != baseball[t][1] || ball != baseball[t][2]) isTrue = false;
+
+               if (!isTrue) break;
+           }
+
+           if (isTrue) answer++;
+       }
+   }
+ }
+```
