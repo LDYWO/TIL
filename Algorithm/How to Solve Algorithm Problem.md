@@ -229,45 +229,7 @@ deque.poll(); // deque의 가장 앞에 있는 요소를 제거하고 반환한�
 - 중간에 중복되지 않는 경우이기 때문에 각 자리 숫자가 같아지는 경우는 ```continue``` 키워드를 사용하여 넘긴다.
 
 ```Java
-for (int i=1; i<10; i++) {
-   for (int j=1; j<10; j++) {
-       if (j==i) continue;
-       for (int k=1; k<10; k++) {
-           if (k==j || k==i) continue;
 
-           boolean isTrue = true;
-
-           for (int t=0; t<baseball.length; t++) {
-
-               String num = String.valueOf(baseball[t][0]);
-               int strike = 0;
-               int ball = 0;
-
-               if (i == Integer.parseInt(String.valueOf(num.charAt(0)))) {
-                   strike++;
-               } else if (i == Integer.parseInt(String.valueOf(num.charAt(1))) || i == Integer.parseInt(String.valueOf(num.charAt(2)))) {
-                   ball++;
-               }
-
-               if (j == Integer.parseInt(String.valueOf(num.charAt(1)))) {
-                   strike++;
-               } else if (j == Integer.parseInt(String.valueOf(num.charAt(0))) || j == Integer.parseInt(String.valueOf(num.charAt(2)))) {
-                   ball++;
-               }
-
-               if (k == Integer.parseInt(String.valueOf(num.charAt(2)))) {
-                   strike++;
-               } else if (k == Integer.parseInt(String.valueOf(num.charAt(0))) || k == Integer.parseInt(String.valueOf(num.charAt(1)))) {
-                   ball++;
-               }
-
-               if (strike != baseball[t][1] || ball != baseball[t][2]) isTrue = false;
-
-               if (!isTrue) break;
-           }
-
-           if (isTrue) answer++;
-       }
-   }
- }
+  import java.util.*;
+  
 ```
