@@ -227,9 +227,138 @@ deque.poll(); // deque의 가장 앞에 있는 요소를 제거하고 반환한�
 #### 5.1.3 숫자 야구
 - 숫자 야구는 중복되지 않는 0 - 9까지의 숫자의 조합이기 떄문에 3중 반복문을 돌린다.
 - 중간에 중복되지 않는 경우이기 때문에 각 자리 숫자가 같아지는 경우는 ```continue``` 키워드를 사용하여 넘긴다.
+- **String** 값을 **Integer** 로 바꿀 때는 ```Integer.parseInt(s)``` 를 사용한다.
+- 반대의 경우는 ```String.valueOf(i)``` 를 사용한다.
 
 ```Java
 
-  import java.util.*;
-  
+for (int i=1; i<10; i++) {
+            for (int j=1; j<10; j++) {
+                if (j==i) continue;
+                for (int k=1; k<10; k++) {
+                    if (k==j || k==i) continue;
+
+                    boolean isTrue = true;
+
+                    for (int t=0; t<baseball.length; t++) {
+
+                        String num = String.valueOf(baseball[t][0]);
+                        int strike = 0;
+                        int ball = 0;
+
+                        if (i == Integer.parseInt(String.valueOf(num.charAt(0)))) {
+                            strike++;
+                        } else if (i == Integer.parseInt(String.valueOf(num.charAt(1))) || i == Integer.parseInt(String.valueOf(num.charAt(2)))) {
+                            ball++;
+                        }
+
+                        if (j == Integer.parseInt(String.valueOf(num.charAt(1)))) {
+                            strike++;
+                        } else if (j == Integer.parseInt(String.valueOf(num.charAt(0))) || j == Integer.parseInt(String.valueOf(num.charAt(2)))) {
+                            ball++;
+                        }
+
+                        if (k == Integer.parseInt(String.valueOf(num.charAt(2)))) {
+                            strike++;
+                        } else if (k == Integer.parseInt(String.valueOf(num.charAt(0))) || k == Integer.parseInt(String.valueOf(num.charAt(1)))) {
+                            ball++;
+                        }
+
+                        if (strike != baseball[t][1] || ball != baseball[t][2]) isTrue = false;
+
+                        if (!isTrue) break;
+                    }
+
+                    if (isTrue) answer++;
+                }
+            }
+        }
 ```
+
+## 6. 동적 계획법 (Dynamic Programming)
+- **동적 계획법** 은 큰 문제를 작은 문제로 나누어서 푸는 알고리즘이다.
+
+### 6.1. 큰 문제를 작은 문제로
+- **동적 계획법** 은 큰 문제를 작은 문제로 나누어서 푸는 기법이다.
+- 그래서 **DP**의 핵심이 ```큰 문제를 작은 문제로 나눠서 푼다.``` 이다.
+- **분할 정복** 과 근본적인 차이는 **메모이제이션** 이다.
+- **DP** 는 계산한 이전의 값을 계속해서 사용하는데 반해 **분할 정복** 은 계산한 부분 문제를 한번만 사용한다.
+
+### 6.2. 메모이제이션 (Memoization)
+- 동적계획법 알고리즘의 대표적인 예 중 하나는 이항 계수의 계산이다.
+- ```bino(a, b) = bino(a-1, b) + bino(a-1, b-1) 이라고 정의해보자.
+- ```bino(4, 2)``` 를 호출했을 떄 아래와 같이 함수가 재귀적으로 호출된다.
+
+![이항계수](../Algorithm/이항계수.png)
+
+- **DP** 에서는 이처럼 중복된 계산을 막기 위해 **저장된 결과를 배열에 저장한뒤, 다음에 계산이 필요할 때는 저장된 값을 불러와서 중복을 없애면 함수 호출이 줄어든다.**
+- 따라서, **시간 복잡도** 또한 훨씬 줄어들게 된다.
+- 이러한 기법을 **메모이제이션(Memoization)** 이라고 한다.
+
+### 6.3. TOP-DOWN
+- 재귀와 같은 방식으로 **위에서 아래로 내려오는 방식이다.**
+- **함수 호출을 줄이기 위해,** 앞서 말했던 **메모이제이션** 을 사용한다.
+
+```java
+// (a) 일반 재귀
+public int fib(int n) {
+  if (n == 1 || n == 2)
+    return 1;
+  return fin(n-1) + fib(n-2);
+}
+
+// (b) 메모이제이션을 적용한 TOP-DOWN 방식 DP
+public int fib(int n) {
+  if (n == 1 || n == 2)
+    return 1;
+  if (!memo[n])
+    return memo[n];
+  memo[n] = fib(n-1) + fib(n-2);
+  return memo[n];
+}
+```
+
+### 6.4. BOTTOM-UP
+- TOP-DOWN 방식과 달리, **for 문을 이용해서 처음 값부터 다음 값을 계산해 나가는 방식** 이다.
+
+```Java
+public int fib(int n) {
+    memo[0] = 0;
+    memo[1] = 1;
+    for (int i=2; i<=n; i++) {
+      memo[i] = memo[i-1] + memo[i-2];
+    }
+    return memo[n];
+}
+```
+
+### 6.5. 동적계획법의 이용
+- **DP** 알고리즘은 최적 값을 구할 때 주로 사용한다.
+- 동적계획법은 중요한 알고리즘 중 하나이기 때문에 대회에도 많이 나올 뿐만 아니라 관련된 문제도 많다.
+
+### 6.6. DP 가이드
+#### 6.6.1. **동적 계획법(DP)** 기반의 알고리즘 동작 방식
+1. 구하고자 하는 큰 문제를 작은 부분 문제로 나눈다.
+2. 가장 작은 부분 문제 (종료 조건, 주로 0 또는 1 일때)부터 푼 뒤 값을 저장한다.
+3. 메모이제이션된 부분 문제들의 해를 이용하여 차례로 더 큰 상위 문제의 답을 구한다.
+4. (3) 과정을 가장 큰 문제에 도달할 때까지 반복한다.
+
+#### 6.6.2. 동적 계획법(DP) 문제 해결 방법
+1. 몇 차원 DP를 할 것인가?
+2. 변수 개수가 정해졌으면 각각의 변수가 무슨 의미인가?
+3. DP 값이 어떤 의미인가?
+4. 어떤 DP 값과 다른 DP 값의 관계가 있는가?
+  (**DP 테이블을 채워보면 쉽게 알 수 있다.**)
+5. 4의 점화식을 이용하여 재귀 또는 for문 DP로 계산한다.
+
+#### 6.6.3. 동적 계획법의 초기화
+동적 계획법에서 **메모이제이션** 말고 또 중요한 것이 **초기화**이다.
+**이미 계산한 것을 다시 계산하지 않기 위해서는 계산한 것과 계산하지 않은 것의 차이가 있어야 한다.**
+계산하지 않은 값은 초기 값 그대로이고 계산한 값은 바뀌어 있기 때문에 그것을 구분한다.
+따라서 동적 계획법에서 계산한 값의 범위를 대략적으로 알아내서 그 범위에 있지 않은 값으로 초기화를 해주어야 한다. **계산된 값이 0일 수 있는 동적 계획법의 경우에는 보통 -1 을 사용하고 계산된 값이 0일 수 없는 경우에는 그냥 전역 변수로 선언한다.**
+
+#### 6.6.4 TOP-DOWN VS BOTTOM-UP
+**TOP-DOWN** 방식에 **메모이제이션** 을 했다는 가정하에 시간복잡도는 같다.
+하지만 실제 걸리는 시간은 **TOP-DOWN** 이 더 길다고 일반적으로 알려져 있다.
+**재귀 DP의 장점은 점화식 그대로 호출이 되기 때문에 형식과 순서에 얽매이지 않는다.**
+후자의 장점은 **시간이 조금 적게 걸린다는 것**이다.
