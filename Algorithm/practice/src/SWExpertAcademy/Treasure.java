@@ -1,56 +1,86 @@
 package SWExpertAcademy;
 
-import java.io.*;
 import java.util.*;
 
 public class Treasure {
-    private static int T;
-    private static BufferedReader br;
-    private static StringTokenizer st;
-    private static int[] N, K;
-    private static String[] S;
+    public static final int MAX_N = 45;
+    static int N, K;
+    // 입력 값을 저장할 배열
+    static int[] Digits;
 
-    public static void main (String[] args) throws NumberFormatException, IOException {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int tcCnt = sc.nextInt();
+        char[] temp = new char[MAX_N + 1];
 
-        br = new BufferedReader(new InputStreamReader(System.in));
+        for (int t = 1; t <= tcCnt; ++t) {
+            N = sc.nextInt();
+            K = sc.nextInt();
+            // 연속된 16 진수 숫자 입력
+            String s = sc.nextLine();
+            s = sc.nextLine();
 
-        T = Integer.parseInt(br.readLine());
-        N = new int[T+1];
-        K = new int[T+1];
-        S = new String[T+1];
+            for (int i1 = 0; i1 < s.length(); i1++) temp[i1] = s.charAt(i1);
+            Digits = new int[MAX_N];
 
-        st = new StringTokenizer(br.readLine(), " ");
-        for (int i=1; i<=T;i++) {
-            N[i] = Integer.parseInt(st.nextToken());
-            K[i] = Integer.parseInt(st.nextToken());
-            S[i] = br.readLine();
-        }
-
-        for (int i=1; i<=T; i++) {
-            System.out.println("#" + i + " " + method(S[i], N[i], K[i]));
-        }
-    }
-
-    public static int method (String s, int N, int K) {
-        // N개의 숫자인 s를 돌려서 나올 수 있는 모든 숫자들 중에 K번째 수를 반환
-        int rotate = N/4; // 만약 12라면 3반환
-        ArrayList<Integer> arrayList = new ArrayList<>();
-
-        // rotate 횟수 만큼 회전을 하여 넣는다.
-        for (int i=0; i<rotate; i++) {
-            int j = 0;
-            while (j<s.length()) {
-                arrayList.add(Integer.parseInt(s.substring(j, j+rotate))); // j를 기점으로 rotate의 길이만큼 잘라서 넣는다.
-                // 중복처리를 해주어야함.
-                j += rotate;
+            for (int i = 0; i < N; ++i) {
+                // i 번쨰 숫자가 10 보다 작을 경우
+                if (temp[i] < 'A') Digits[i] = temp[i] - '0';
+                // i 번째 숫자가 10 보다 같거나 큰 경우
+                else Digits[i] = temp[i] - 'A' + 10;
             }
 
-            s = s.substring(1, s.length()) + s.substring(0, 2); // rotate 시킨 것
+            // 배열 앞의 N/4 개의 데이터를 맨 뒤에 추가해줌
+            for (int a = 0; a < N / 4; ++a)
+                Digits[N + a] = Digits[a];
+
+            System.out.println(t + ": " + solve());
         }
 
-        Collections.sort(arrayList);
-        Collections.reverse(arrayList);
+    }
 
-        return arrayList.get(K-1);
+    public static int solve() {
+        // 16 진수를 10 진수로 변환한 숫자들을 저장할 배열
+        int[] nums = new int[MAX_N];
+        int cnt = 0;
+        // 한 변에 들어갈 숫자의 개수
+        int len = N / 4;
+
+        // 배열의 시작 index
+        for (int i = 0; i < len; ++i) {
+            // 마름모 4개의 변
+            for (int j = 0; j < 4; ++j) {
+                int tmp = 0;
+                // 마름모 한 개의 변에 있는 숫자들
+                for (int k = 0; k < len; ++k) {
+                    // 숫자들의 자리수 증가
+                    tmp *= 16;
+                    // j 구간의 k 번 째 숫자를 더함
+                    tmp += Digits[i + j * len + k];
+                }
+                // 만들어진 N/4 자리 수 저장
+                nums[cnt++] = tmp;
+            }
+        }
+
+        // 내림차순으로 정렬
+            for (int i = 0; i < cnt - 1; ++i) {
+                for (int j = i + 1; j < cnt; ++j) {
+                    // 현재 위치의 값(앞의 값) 보다 뒤의 값이 작으면 자리 변환
+                    if (nums[i] < nums[j]) {
+                        int tmp = nums[i];
+                        nums[i] = nums[j];
+                        nums[j] = tmp;
+                    }
+                }
+            }
+
+            int k;
+            for (k = 0; k < K; k++) {
+                // 중복된 수일 경우, K++ 번째 수를 찾는 것으로 변경
+                if (k > 0 && nums[K] == nums[k-1]) K++;
+            }
+
+            return nums[k-1];
     }
 }
