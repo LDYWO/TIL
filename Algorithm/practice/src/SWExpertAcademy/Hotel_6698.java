@@ -3,9 +3,16 @@ package SWExpertAcademy;
 import java.util.*;
 
 public class Hotel_6698 {
+    private static int[][] dp;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
+
+        dp = new int[1000001][1000001]; // dp[N][K] N개의 방이 주어졌을 떄, K 번째 방에 손님이 있을 확률
+
+        dp[1][1] = 0;
+        dp[2][1] = 1;
+        dp[2][2] = 1;
 
         for (int test_case = 1; test_case <= T; test_case++) {
             /*
@@ -14,7 +21,18 @@ public class Hotel_6698 {
             * 이 확률을 그대로 출력하는 것이 아니고, 확률에 (N-1)!을 곱한 다음 1,000,000,007로 나눈 나머지를 출력한다.
             * 이 확률에 (N-1)! 을 곱하면 정수가 된다는 것은 쉽게 증명 가능하다.
             */
+            // 3 3 -> 방이 3개일 때 3번째 방에 손님이 있을 확률
+            // 3 2 -> 방이 3개일 때 2번째 방에 손님이 있을 확률
+            int N = sc.nextInt();
+            int K = sc.nextInt();
+
+            System.out.println("#" + test_case + " " + DP(N, K));
         }
+    }
+
+    public static int DP (int N, int K) {
+
+        return dp[N][K];
     }
 }
 
