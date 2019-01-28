@@ -21,8 +21,8 @@ SELECT 적인 성향을 갖고 있다고 볼 수 있는 것이다. 반면에 POS
 ## 2. TCP 3-WAY-HANDSHAKE
 ### 연결 성립 (Connection Establishment)
 1. 클라이언트는 서버에 접속을 요청하는 **SYN(a)** 패킷을 보낸다.
-2. 서버는 클라이언트의 요청인 **SYN(a)**을 받고 클라이언트에게 요청을 수락한다는 **ACK(a+1)**와 **SYN(b)**이 설정된 패킷을 발송한다.
-3. 클라이언트는 서버의 수락 응답인 **ACK(a+1)**와 **SYN(b)** 패킷을 받고 **ACK(b+1)**를 서버로 보내면 연결이 **성립(establish)**된다.
+2. 서버는 클라이언트의 요청인 **SYN(a)** 을 받고 클라이언트에게 요청을 수락한다는 **ACK(a+1)** 와 **SYN(b)** 이 설정된 패킷을 발송한다.
+3. 클라이언트는 서버의 수락 응답인 **ACK(a+1)** 와 **SYN(b)** 패킷을 받고 **ACK(b+1)** 를 서버로 보내면 연결이 **성립(establish)** 된다.
 
 ### 연결 해제 (Connection Termination)
 1. 클라이언트가 연결을 종료하겠다는 **FIN플래그**를 전송한다.
@@ -35,6 +35,7 @@ SELECT 적인 성향을 갖고 있다고 볼 수 있는 것이다. 반면에 POS
 
 ### SYN, ACK Packet?
 > SYN :: synchronize sequence number
+
 > ACK :: acknowledgement
 
 **TCP Header** 에는 **Code Bit(Flag bit)** 라는 부분이 존재한다. 이 부분은 총 **6Bit**로 이루어져 있으며 각각 한 bit 들이 의미를 갖고 있다.
