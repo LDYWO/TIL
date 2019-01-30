@@ -93,7 +93,6 @@ public class Prize_1244 {
         int sw = 0;
         for (int i = n; n < num.length-1; i++) {
             for (int j = i+1; j < num.length; j++) {
-                if (num[i] = )
             }
         }
     }
