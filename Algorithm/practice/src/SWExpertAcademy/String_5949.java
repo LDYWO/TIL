@@ -2,6 +2,7 @@ package SWExpertAcademy;
 
 import java.util.*;
 
+// 완료
 public class String_5949 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
