@@ -2,46 +2,8 @@ package SWExpertAcademy;
 
 import java.util.*;
 
+// 완료
 public class Prize_1244 {
- /*   private static PriorityQueue<Integer> pq;
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-
-        for (int test_case = 1; test_case <= T; test_case++) {
-            int C = sc.nextInt();
-            int N = sc.nextInt();
-
-            String S = String.valueOf(C);
-
-            pq = new PriorityQueue<>((a,b) -> b-a); // 오름 차순으로 정렬하는 PQ
-
-            DFS(S, N, 0);
-        }
-    }
-
-    public static String swap (String S, int start, int target) {
-
-        // s의 start 와 target 의 인덱스 값을 바꿔주는 코드
-        S = S.substring(0, start) + S.charAt(target) + S.substring(start + 1, target) + S.charAt(start) + S.substring(target, S.length());
-
-        return S;
-    }
-
-    public static void DFS (String S, int N, int cnt) {
-
-        // 스왑 횟수만큼 DFS 를 진행했다면 DFS 를 종료한다.
-        if (N == cnt) {
-            return;
-        }
-
-        // 1. 스왑 할 두개의 요소를 뽑는다.
-        for (int i = 0; i < )
-        // 2. 스왑
-
-        DFS(S, N, cnt + 1);
-
-    }*/
     static int num[];
     static int count;
     static int max;
@@ -50,28 +12,34 @@ public class Prize_1244 {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
 
-        for (int i = 1; i <= T; i++) {
-            String str = sc.next();
-            count = sc.nextInt();
-            num = new int[str.length()];
+        for (int i = 0; i < T; i++) {
+            String str = sc.next(); // 입력된 숫자 값을 스트링으로 저장한다.
+            count = sc.nextInt(); // 스왑을 할 횟수
+            num = new int[str.length()]; // 스트링으로 받은 숫자를 정수 배열에 대입
 
-            for (int j = 0; j < str.length(); j++) {
+            // 스트링 값을 하나하나 쪼개서 대입
+            for (int j = 0; j < str.length() ; j++) {
                 num[j] = (int)str.charAt(j) - 48;
             }
 
+            // 최댓 값을 저장하는 정수
             max = 0;
 
+            // DFS 를 실행한다
             DFS(0, 0);
-            System.out.println("#" + i + " " + (max));
+
+            System.out.println("#" + (i + 1) + " " + (max));
         }
     }
 
-    public static void swap (int x, int y) {
+    // 자릿 수를 바꾸는 함수
+    public static void swap(int x, int y) {
         int temp = num[x];
         num[x] = num[y];
         num[y] = temp;
     }
 
+    // 최댓 값을 갱신하는 함수
     public static void max() {
         String str = "";
 
@@ -81,18 +49,28 @@ public class Prize_1244 {
 
         int temp = Integer.parseInt(str);
 
-        max = Math.max(temp, max);
+        max = Math.max(max, temp);
     }
 
     public static void DFS (int n, int cnt) {
         if (cnt >= count) {
+            // DFS 를 진행한 횟수가 전체 스왑 횟수 제한보다 크거나 같아지는 순간 (모든 경우의 수에서 가장 큰 경우)
             max();
-            return;
+            return; // max() 함수를 실행하여 최댓 값을 저장한 뒤 DFS 를 종료한다
         }
 
-        int sw = 0;
-        for (int i = n; n < num.length-1; i++) {
-            for (int j = i+1; j < num.length; j++) {
+        // 앞부터 차례대로 백트래킹 (DFS 를 실행하는 횟수만큼 인덱스가 이동된다
+        for (int i = n; i < num.length; i++) {
+            // 해당 인덱스보다 뒤에 있는 애들을 다 검사한다.
+            for (int j = i + 1; j < num.length; j++) {
+                // 만약 맨 앞에 있는 인덱스의 값보다 큰 것이 있다면 교환한다
+                if (num[i] <= num[j]) {
+                    swap(j, i);
+                    DFS(j, cnt + 1);
+                    // 교환한 뒤 다시 되돌려준다. (모든 경우의 수를 고려해야 하기 때문에)
+                    swap(i, j);
+                }
+
             }
         }
     }

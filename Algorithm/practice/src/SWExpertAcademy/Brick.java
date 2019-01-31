@@ -2,6 +2,7 @@ package SWExpertAcademy;
 
 import java.util.*;
 
+// 완료
 public class Brick {
 
     static int N, W, H, ANSWER;

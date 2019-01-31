@@ -2,6 +2,7 @@ package SWExpertAcademy;
 
 import java.util.*;
 
+// 완료
 public class Hyunju {
     static int solve(int N) {
         int cnt = 0;
