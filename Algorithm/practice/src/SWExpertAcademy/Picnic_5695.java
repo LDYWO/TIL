@@ -44,7 +44,6 @@ public class Picnic_5695 {
 
         for (int i = 0; i < R.length; i++) {
             DFS(R[i] - 1, R, arrayList);
-            // DFS 로 푸는 것인가 아니면 DP 인가...
         }
     }
 }
