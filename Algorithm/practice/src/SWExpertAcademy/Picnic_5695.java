@@ -42,9 +42,6 @@ public class Picnic_5695 {
             return;
         }
 
-        for (int i = 0; i < R.length; i++) {
-            DFS(R[i] - 1, R, arrayList);
-        }
     }
 }
 
