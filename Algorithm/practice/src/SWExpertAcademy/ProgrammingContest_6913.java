@@ -8,24 +8,22 @@ public class ProgrammingContest_6913 {
 
         int T = sc.nextInt();
 
-        for (int i = 1; i < T; i++) {
-            int N = sc.nextInt(); // 사람의 수 (행)
-            int M = sc.nextInt(); // 문제의 수 (열)
+        // Test Case 만큼 반복문 수행
+        for (int i = 1; i <= T ; i++) {
+            int N = sc.nextInt();
+            int M = sc.nextInt();
 
-            int[][] matrix = new int[N+1][M+1];
-            // 일단 처리해야할 일
-            // 1. 배열을 입력 받아서 한 학생이 푼 문제의 수를 정렬
-            // 2. 가장 큰 수를 가진 학생이 누구인지 확인
-            // 3. 그 학생과 같은 수를 가진 학생이 몇 명인지 확인하고 출력하는 것으로 마무리한다.
-            // 즉, 마지막에 나오는 값은 1등을 한 사람의 수 (N을 넘지 않는 값) 과 그 1등이 푼 문제의 개수 (M을 넘지 않는 값) 의 조합으로 나온다.
+            int[][] matrix = new int[N][M];
+            int[] answer = new int[N];
+
             for (int j = 0; j < N; j++) {
+                int sum = 0;
                 for (int k = 0; k < M; k++) {
-                    matrix[j][k] = sc.nextInt();
+                    int a = sc.nextInt();
+                    sum +=  a;
                 }
+                answer[j] = sum;
             }
-
-            int answer =  0;
-            int answer2 = 0;
         }
     }
 }
