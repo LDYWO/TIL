@@ -1,7 +1,102 @@
 import java.util.*;
 
 public class Tree {
-    public static int N, M, K;
+    static int N, M, K;
+    static int[][] A = new int[10][10];
+    static int[][] F = new int[10][10];
+    static ArrayList<TREE> Trees = new ArrayList<>();
+    static int[] Dr = {-1, -1, -1, 0, 0, 1, 1, 1};
+    static int[] Dc = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        N = sc.nextInt();
+        M = sc.nextInt();
+        K = sc.nextInt();
+
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                A[i][j] = sc.nextInt();
+                F[i][j] = 5;
+            }
+        }
+
+        int x, y, z;
+        for (int i = 0; i < M; ++i) {
+            x = sc.nextInt();
+            y = sc.nextInt();
+            z = sc.nextInt();
+
+            Trees.add(new TREE(x-1, y-1, z, true));
+        }
+
+    }
+
+    static int solve() {
+        for (int k = 0; k < K; ++k) {
+
+            // 봄
+            for (TREE t : Trees) {
+                if (t.age <= F[t.r][t.c]) {
+                    F[t.r][t.c] -= t.age;
+                    t.age++;
+                } else {
+                    t.alive = false;
+                }
+            }
+
+            // 여름
+            for (Iterator<TREE> it = Trees.iterator(); it.hasNext();) {
+                TREE t = it.next();
+
+                if (!t.alive) {
+                    F[t.r][t.c] += t.age / 2;
+                    it.remove();
+                }
+            }
+
+            // 가을
+            ArrayList<TREE> newTrees = new ArrayList<>();
+            for (TREE t : Trees) {
+                if (t.age % 5 == 0) {
+
+                    for (int i = 0; i < 8; ++i) {
+                        int nr = t.r + Dr[i], nc = t.c + Dc[i];
+
+                        if (nr < 0 || nr > N -1 || nc < 0 || nc > N-1) continue;
+
+                        newTrees.add(new TREE(nr, nc, 1, true));
+                    }
+                }
+            }
+            Trees.addAll(0, newTrees);
+
+            for (int i = 0; i < N; ++i) {
+                for (int j = 0; j < N; ++j) {
+                    F[i][j] += A[i][j];
+                }
+            }
+        }
+
+        return Trees.size();
+    }
+
+    static class TREE {
+        int r, c, age;
+        boolean alive;
+
+        public TREE (int r, int c, int age, boolean alive) {
+            this.r = r;
+            this.c = c;
+            this.age = age;
+            this.alive = alive;
+        }
+    }
+}
+
+/*
+public static int N, M, K;
     public static int[][] Map = new int[10][10]; // 상도가 구매한 땅, 그리고 그 좌표에 있는 양분
     public static int[][] A = new int[10][10]; // 겨울에 로봇이 뿌릴 양분
     public static ArrayList<TreeInfo> T = new ArrayList<>();
@@ -157,6 +252,7 @@ public class Tree {
         }
     }
 }
+ */
 
 /*
     삼성 기출
