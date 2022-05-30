@@ -1,0 +1,1 @@
+https://gmlwjd9405.github.io/2019/05/21/intellij-shortkey.html
